@@ -1,5 +1,6 @@
 module.exports = {
   mode: 'jit',
+  separator: '_',
   purge: {
     content: [
       './src/**/*.pug',
@@ -14,7 +15,13 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'color1': '#3C3E42',
+        'color2': '#423C3C',
+        'color3': '#DC5953'
+      }
+    },
   },
   variants: {
     extend: {},

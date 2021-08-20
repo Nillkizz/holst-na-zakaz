@@ -1,1 +1,51 @@
-@import 'index.css';
+@import "index.css";
+@import "fonts";
+@import "variables";
+@import "mixins";
+@import "templates";
+
+body {
+  font-family: Raleway;
+  font-size: 14px;
+}
+
+header {
+  height: 100px;
+  &.mobile {
+    @apply flex lg_hidden justify-between items-center mx-8 gap-4;
+    .nav-wrapper {
+      @apply bg-white w-screen h-screen fixed top-0 left-0;
+      nav{
+        font-size: 18px;
+        li{
+          @apply mb-6;
+        }
+      }
+    }
+  }
+
+  &:not(.mobile) {
+    @apply hidden lg_flex justify-between items-center lg_mx-6 xl_mx-14;
+    &.adaptive-gap,
+    &.adaptive-gap .contacts,
+    &.adaptive-gap nav ul,
+    &.adaptive-gap .buttons {
+      @extend %adaptive-gap;
+    }
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  :not(.logo) {
+    @apply text-color1;
+  }
+
+  .contacts {
+    .phone {
+      font-family: Roboto;
+    }
+  }
+}

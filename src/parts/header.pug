@@ -1,0 +1,34 @@
+header.adaptive-gap
+    a.logo(href='/') HOLST-NA-ZAKAZ
+    nav
+        ul.flex
+            each item in navItems
+                li
+                    a(href=item.link)= item.text
+    .contacts.flex 
+        a.phone(href=`tel:${phoneNumber}`)= phoneNumber
+        .buttons.flex
+            each social in socials
+                a(href=social.link title=social.title) 
+                    + svgUse(social.icon)
+
+header.mobile
+    button.menu 
+        + svgUse('menu', 30, 26)
+    a.logo(href='/') HOLST-NA-ZAKAZ
+    .nav-wrapper.pl-16.hidden
+        .flex.justify-end.p-6
+            button.close
+                + svgUse('cross', 43, 43)
+        nav.mb-16
+            ul.flex-col
+                each item in navItems
+                    li
+                        a(href=item.link).font-normal= item.text
+        .contacts.flex
+            .buttons.flex.gap-8
+                each social in socials
+                    a(href=social.link title=social.title).scale-150
+                        + svgUse(social.icon)
+                a.phone(href=`tel:${phoneNumber}`).scale-150
+                    + svgUse('phone')

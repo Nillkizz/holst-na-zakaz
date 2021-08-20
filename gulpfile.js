@@ -43,9 +43,11 @@ function clear(){
     return del(path.clear);
 }
 
+function clearAssets(){
+    return del(path.build.assets);
+}
 function assets(){
-    del(path.build.assets);
-    return gulp.src(path.src.assets, {allowEmpty: true})
+    return gulp.src(path.src.assets)
         .pipe(gulp.dest(path.build.assets));
 }
 
@@ -62,7 +64,7 @@ function watchFiles() {
     gulp.watch(path.watch.pug, gulp.series(html, styles)).on('change', bs.reload);
     gulp.watch(path.watch.styles, styles).on('change', bs.reload);
     gulp.watch(path.watch.js, js).on('change', bs.reload);
-    gulp.watch(path.watch.assets, assets).on('add', bs.reload).on('unlink', bs.reload);
+    gulp.watch(path.watch.assets, gulp.series(clearAssets, assets)).on('add', bs.reload).on('unlink', bs.reload);
 }
 
 const build = gulp.series(clear, html, styles, js, assets);
