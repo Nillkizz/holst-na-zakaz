@@ -1,5 +1,5 @@
 header.adaptive-gap
-    a.logo(href='/') HOLST-NA-ZAKAZ
+    a.logo.uppercase(href='/')= brandName
     nav
         ul.flex
             each item in navItems
@@ -15,12 +15,12 @@ header.adaptive-gap
 
 header.mobile
     button.menu.p-3
-        + svgUse('menu', 30, 26)
-    a.logo(href='/') HOLST-NA-ZAKAZ
+        + svgUse('menu')
+    a.logo.uppercase(href='/')= brandName
     .nav-wrapper.pl-16.hidden
         .flex.justify-end.p-2
             button.close.p-4
-                + svgUse('cross', 'scale-150')
+                + svgUse('cross')
         nav.mb-16
             ul.flex-col
                 each item in navItems

@@ -24,11 +24,19 @@ header {
     .logo {
       font-size: 24px;
     }
+    button.menu svg{
+      height: 30px;
+      width: 30px;      
+    }
     .nav-wrapper {
       @apply bg-white w-screen h-screen fixed top-0 left-0 translate-x-0 transition-all duration-500 ease-in-out;
       &.hidden {
         display: block;
         @apply -translate-x-full;
+      }
+      .close svg{
+        height: 30px;
+        width: 30px;
       }
       nav {
         font-size: 18px;
