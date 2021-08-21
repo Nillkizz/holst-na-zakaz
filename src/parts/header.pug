@@ -6,20 +6,21 @@ header.adaptive-gap
                 li
                     a(href=item.link)= item.text
     .contacts.flex 
-        a.phone(href=`tel:${phoneNumber}`)= phoneNumber
+        a.phone(href=`tel:${phoneNumberMsc}`)= phoneNumberMsc
         .buttons.flex
-            each social in socials
-                a(href=social.link title=social.title) 
-                    + svgUse(social.icon)
+            a(href=messengers.whatsapp.link title='WhatsApp') 
+                + svgUse('whatsapp')
+            a(href=`mailto:${email}` title='Email') 
+                + svgUse('mail')
 
 header.mobile
-    button.menu 
+    button.menu.p-3
         + svgUse('menu', 30, 26)
     a.logo(href='/') HOLST-NA-ZAKAZ
     .nav-wrapper.pl-16.hidden
-        .flex.justify-end.p-6
-            button.close
-                + svgUse('cross', 43, 43)
+        .flex.justify-end.p-2
+            button.close.p-4
+                + svgUse('cross', 'scale-150')
         nav.mb-16
             ul.flex-col
                 each item in navItems
@@ -27,8 +28,9 @@ header.mobile
                         a(href=item.link).font-normal= item.text
         .contacts.flex
             .buttons.flex.gap-8
-                each social in socials
-                    a(href=social.link title=social.title).scale-150
-                        + svgUse(social.icon)
-                a.phone(href=`tel:${phoneNumber}`).scale-150
+                a.scale-150(href=messengers.whatsapp.link title='WhatsApp')
+                    + svgUse('whatsapp')
+                a.scale-150(href=`mailto:${email}` title='Email')
+                    + svgUse('mail')
+                a.phone.scale-150(href=`tel:${phoneNumberMsc}`)
                     + svgUse('phone')

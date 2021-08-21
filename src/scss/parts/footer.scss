@@ -1,0 +1,73 @@
+footer {
+  font-size: var(--fs2);
+  .title {
+    @apply mb-3 text-2xl font-bold;
+    font-family: Raleway;
+    font-size: var(--fs3);
+  }
+  .logo {
+    @apply font-bold no-underline;
+    font-family: Raleway;
+    font-size: var(--fs4);
+  }
+  .address {
+    font-family: Roboto;
+  }
+  .email {
+    font-family: Raleway;
+  }
+  .contacts {
+    line-height: var(--fs2);
+    font-family: Roboto;
+    ul {
+      @apply flex flex-col gap-5;
+      li {
+        @apply flex gap-3;
+      }
+    }
+  }
+  .workSchedule {
+    font-size: var(--fs1);
+    font-family: Roboto;
+  }
+  .socials {
+    .title {
+      @apply font-bold mb-8;
+      font-size: var(--fs3);
+    }
+    .btns {
+      @apply flex gap-3 mb-12;
+      svg {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+  .links {
+    @apply flex flex-col;
+    font-size: var(--fs1);
+  }
+  .cards,
+  .shipping {
+    .items {
+      @apply flex gap-3 mb-12;
+      svg {
+        height: 54px;
+        width: 54px;
+      }
+    }
+  }
+  .shipping {
+    .items {
+      svg {
+        height: 27px;
+        width: 100px;
+      }
+    }
+  }
+  .payment-details {
+    .links {
+      font-size: var(--fs1);
+    }
+  }
+}

@@ -3,19 +3,20 @@ const gulp = require('gulp'),
 
     pug = require('gulp-pug'),
     htmlmin = require('gulp-htmlmin'),
-    
-    
+
+
     sass = require('gulp-sass')(require('sass')),
     postcss = require('gulp-postcss'),
 
     concat = require('gulp-concat'),
+    include = require('gulp-file-include'),
 
     del = require('del'),
     bs = require('browser-sync'),
 
     { path, configs } = require('./config.js');
 
-function html(){
+function html() {
     return gulp.src(path.src.pug)
         .pipe(pug())
         .pipe(htmlmin())
@@ -33,20 +34,21 @@ function styles() {
         .pipe(gulp.dest(path.build.css))
 }
 
-function js(){
-  return gulp.src(path.src.js)
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest(path.build.js));
+function js() {
+    return gulp.src(path.src.js)
+        .pipe(include())
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest(path.build.js));
 }
 
-function clear(){
+function clear() {
     return del(path.clear);
 }
 
-function clearAssets(){
+function clearAssets() {
     return del(path.build.assets);
 }
-function assets(){
+function assets() {
     return gulp.src(path.src.assets)
         .pipe(gulp.dest(path.build.assets));
 }
@@ -64,7 +66,10 @@ function watchFiles() {
     gulp.watch(path.watch.pug, gulp.series(html, styles)).on('change', bs.reload);
     gulp.watch(path.watch.styles, styles).on('change', bs.reload);
     gulp.watch(path.watch.js, js).on('change', bs.reload);
-    gulp.watch(path.watch.assets, gulp.series(clearAssets, assets)).on('add', bs.reload).on('unlink', bs.reload);
+    gulp.watch(path.watch.assets, gulp.series(clearAssets, assets))
+        .on('add', bs.reload)
+        .on('unlink', bs.reload)
+        .on('change', bs.reload);
 }
 
 const build = gulp.series(clear, html, styles, js, assets);

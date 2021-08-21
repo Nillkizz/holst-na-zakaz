@@ -1,0 +1,59 @@
+footer.gradient-1.text-white.p-5.sm_p-14
+    .row.mb-6.text-center.md_text-left
+        a.logo(href='/') HOLST-NA-ZAKAZ
+    .row.mb-8.flex.justify-between.flex-wrap.gap-8
+        div
+            .address.mb-8
+                span Бесплатный звонок по РФ:#[br]
+                a.font-bold.phone(href=`tel:${freePhoneNumber}`)!= freePhoneNumber + '<br>'
+                span!= address
+            .contacts.mb-8
+                ul 
+                    li
+                        +svgUse('whatsapp')
+                        a.phone(href=`tel:${phoneNumber}`) #[b= phoneNumber]
+                    li
+                        +svgUse('phone')
+                        a.phone(href=`tel:${phoneNumberMsc}`) #[b= phoneNumberMsc] (Москва)
+                    li
+                        +svgUse('phone')
+                        a.phone(href=`tel:${phoneNumberSpb}`) #[b= phoneNumber] (Санкт-Петербург)
+                    li
+                        +svgUse('mail')
+                        a.email(href=`mailto:${email}`)= email
+            div.workSchedule.flex.flex-col
+                span.title График работы
+                span= workSchedule
+        div
+            .socials
+                .title Наши соц сети
+                .btns
+                    each value in socials
+                        a(href=value.link)
+                            + svgUse(value.icon, 'border border-white rounded-full')
+            .links 
+                each item in footerLinks
+                    a(href=item.link)= item.text
+        div
+            .cards 
+                .title Принимаем к оплате
+                .items
+                    each item in payments
+                        + svgUse(item.icon)
+            .shipping 
+                .title Доставляем по РФ
+                .items
+                    each item in shipping
+                        + svgUse(item.icon)
+            .payment-details
+                .title Реквизиты
+                .links
+                    a(href=paymentDetailsLink) Скачать реквизиты
+
+
+    .row.flex.flex-wrap.gap-3
+        span © Холст на заказ, 2017-2021
+        span |
+        a(href="/") holst-na-zakaz.ru
+        span |
+        a(href=`mailto:${email}`)= email
