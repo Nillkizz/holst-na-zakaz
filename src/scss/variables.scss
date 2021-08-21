@@ -1,15 +1,13 @@
 :root {
-  --fs1: 17px;
-  --fs2: 20px;
-  --fs3: 24px;
-  --fs4: 36px;
+  --fs1: 14px;
+  --fs2: 24px;
+  --fs3: 36px;
 }
 
 @media screen and (max-width: 640px) {
   :root {
-    --fs1: 17px;
-    --fs2: 16px;
-    --fs3: 16px;
-    --fs4: 36px;
+    --fs1: 16px;
+    --fs2: 18px;
+    --fs3: 36px;
   }
 }

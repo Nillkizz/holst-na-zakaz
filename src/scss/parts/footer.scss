@@ -1,14 +1,15 @@
 footer {
-  font-size: var(--fs2);
+  @apply text-white p-5 sm_p-14;
+  font-size: var(--fs1);
   .title {
     @apply mb-3 text-2xl font-bold;
     font-family: Raleway;
-    font-size: var(--fs3);
+    font-size: var(--fs2);
   }
   .logo {
     @apply font-bold no-underline;
     font-family: Raleway;
-    font-size: var(--fs4);
+    font-size: var(--fs3);
   }
   .address {
     font-family: Roboto;
@@ -17,12 +18,12 @@ footer {
     font-family: Raleway;
   }
   .contacts {
-    line-height: var(--fs2);
+    @apply mb-8;
     font-family: Roboto;
     ul {
-      @apply flex flex-col gap-5;
-      li {
-        @apply flex gap-3;
+      @apply flex flex-col gap-2;
+      li a {
+        @apply flex gap-3 ;
       }
     }
   }
@@ -33,10 +34,10 @@ footer {
   .socials {
     .title {
       @apply font-bold mb-8;
-      font-size: var(--fs3);
+      font-size: var(--fs2);
     }
     .btns {
-      @apply flex gap-3 mb-12;
+      @apply flex gap-3 mb-8;
       svg {
         height: 40px;
         width: 40px;
@@ -50,7 +51,7 @@ footer {
   .cards,
   .shipping {
     .items {
-      @apply flex gap-3 mb-12;
+      @apply flex gap-3 mb-8;
       svg {
         height: 54px;
         width: 54px;
@@ -69,5 +70,9 @@ footer {
     .links {
       font-size: var(--fs1);
     }
+  }
+  .site-info{
+    font-size: var(--fs1);
+    font-family: Roboto;
   }
 }
