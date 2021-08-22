@@ -1,35 +1,38 @@
-header.adaptive-gap
-    a.logo.uppercase(href='/')= brandName
-    nav
-        ul.flex
-            each item in navItems
-                li
-                    a(href=item.link)= item.text
-    .contacts.flex 
-        a.phone(href=`tel:${phoneNumberMsc}`)= phoneNumberMsc
-        .buttons.flex
-            a(href=messengers.whatsapp.link title='WhatsApp') 
-                + svgUse('whatsapp')
-            a(href=`mailto:${email}` title='Email') 
-                + svgUse('mail')
-header.mobile
-    button.menu.p-3
-        + svgUse('menu')
-    a.logo.uppercase(href='/')= brandName
-    .nav-wrapper.pl-16.hidden
-        .flex.justify-end.p-2
-            button.close.p-4
-                + svgUse('cross')
-        nav.mb-16
-            ul.flex-col
+header
+    a.logo(href='/')= brandName
+    .wrapper
+        nav
+            ul
                 each item in navItems
                     li
-                        a(href=item.link).font-normal= item.text
-        .contacts.flex
-            .buttons.flex.gap-8
-                a.scale-150(href=messengers.whatsapp.link title='WhatsApp')
+                        a(href=item.link)= item.text
+        .contacts
+            a.phone(href=`tel:${phoneNumberMsc}`)= phoneNumberMsc
+            .btns
+                a(href=messengers.whatsapp.link title='WhatsApp') 
                     + svgUse('whatsapp')
-                a.scale-150(href=`mailto:${email}` title='Email')
+                a(href=`mailto:${email}` title='Email') 
                     + svgUse('mail')
-                a.phone.scale-150(href=`tel:${phoneNumberMsc}`)
-                    + svgUse('phone')
+    //- empty blocks for make navs and contacts block in center
+    .empty.hidden.xl_block  
+    .empty.hidden.2xl_block
+header.mobile
+    button.menu
+        + svgUse('menu')
+    a.logo(href='/')= brandName
+    .nav-wrapper.hidden
+        .close-wrapper
+            button.close
+                + svgUse('cross')
+        nav
+            ul
+                each item in navItems
+                    li
+                        a(href=item.link)= item.text
+        .contacts
+            a(href=messengers.whatsapp.link title='WhatsApp')
+                + svgUse('whatsapp')
+            a(href=`mailto:${email}` title='Email')
+                + svgUse('mail')
+            a(href=`tel:${phoneNumberMsc}`)
+                + svgUse('phone')

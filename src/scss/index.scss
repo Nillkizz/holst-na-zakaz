@@ -1,24 +1,26 @@
-@import "index.css";
-@import "fonts";
 @import "variables";
-@import "mixins";
-@import "templates";
 
 body {
-  @apply h-screen flex flex-col;
-  font-family: Raleway;
-  font-size: 14px;
+  @apply h-screen flex flex-col text-14 font-raleway text-color1;
 }
 svg {
   height: 20px;
   width: 20px;
   fill: #3c3e42;
 }
-.gradient-1 {
-  background: linear-gradient(265.78deg, #dc5953 6.89%, #fd6f31 95.01%);
-}
-a:hover{
+
+a:hover {
   @apply underline;
 }
+
+.adaptive-gap{
+    @apply gap-6 xl_gap-10 2xl_gap-12 ;
+}
+@import "index.css";
+@import "fonts";
+@import "mixins";
+@import "templates";
+@import "components";
+
 @import "parts/header";
 @import "parts/footer";

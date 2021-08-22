@@ -1,59 +1,71 @@
 header {
   min-height: 100px;
 
-  .logo {
-    @apply font-bold no-underline;
-    font-family: Raleway;
-  }
-
   &:not(.mobile) {
+    @extend .adaptive-gap;
     @apply hidden xl_flex justify-between items-center lg_mx-6 xl_mx-14;
     .logo {
-      font-size: 28px;
+      @extend .logo;
+      @apply text-28;
     }
-    &.adaptive-gap,
-    &.adaptive-gap .contacts,
-    &.adaptive-gap nav ul,
-    &.adaptive-gap .buttons {
-      @extend %adaptive-gap;
+
+    .wrapper,
+    & nav ul,
+    & .contacts,
+    & .contacts .btns {
+      @extend .adaptive-gap;
+      @apply flex items-center;
+    }
+    .contacts {
+      @apply gap-8;
+      .phone {
+        @apply font-roboto;
+      }
     }
   }
 
   &.mobile {
     @apply flex xl_hidden justify-between items-center ml-4 mr-8 gap-4;
     .logo {
+      @extend .logo;
       font-size: 24px;
     }
-    button.menu svg{
-      height: 30px;
-      width: 30px;      
+    button.menu {
+      @apply p-3;
+      svg {
+        height: 30px;
+        width: 30px;
+      }
     }
     .nav-wrapper {
-      @apply bg-white w-screen h-screen fixed top-0 left-0 translate-x-0 transition-all duration-500 ease-in-out;
+      @apply bg-white w-screen h-screen fixed pl-10 xs_pl-16 top-0 left-0 translate-x-0 transition-all duration-500 ease-in-out;
       &.hidden {
         display: block;
         @apply -translate-x-full;
       }
-      .close svg{
-        height: 30px;
-        width: 30px;
+      .close-wrapper {
+        @apply flex justify-end p-2;
+        .close {
+          @apply p-4;
+          svg {
+            height: 30px;
+            width: 30px;
+          }
+        }
       }
       nav {
-        font-size: 18px;
-        li {
+        @apply text-18 mb-12;
+        ul li {
           @apply mb-6;
         }
       }
-    }
-  }
-
-  :not(.logo) {
-    @apply text-color1;
-  }
-
-  .contacts {
-    .phone {
-      font-family: Roboto;
+      .contacts {
+        @apply flex gap-8;
+        svg {
+          height: 30px;
+          width: 30px;
+        }
+      }
     }
   }
 }

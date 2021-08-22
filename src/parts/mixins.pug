@@ -1,3 +1,7 @@
-mixin svgUse( name, classes )
-    svg( class=`fill-current ${classes}` )
+mixin svgUse( name )
+    svg( class='fill-current' class!=attributes.class )
         use(xlink:href=`/assets/icons.svg#${name}`)
+
+mixin textBtn()
+    button.text-button(class!=attributes.class)
+        block

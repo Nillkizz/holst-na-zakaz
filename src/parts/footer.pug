@@ -1,32 +1,32 @@
-footer.gradient-1
-    .max-w-full.w-max.m-auto
-        .row.mb-8.text-center.md_text-left
+footer
+    .wrapper
+        .row-1
             a.logo.uppercase(href='/')= brandName
-        .row.mb-8.flex.flex-wrap.xl_gap-40.gap-12
+        .row-2
             div
-                .address.mb-8
+                .address
                     span Бесплатный звонок по РФ:#[br]
-                    a.font-bold.phone(href=`tel:${freePhoneNumber}`)!= freePhoneNumber + '<br>'
+                    a.font-bold(href=`tel:${freePhoneNumber}`)!= freePhoneNumber + '<br>'
                     span!= address
                 .contacts
                     ul 
                         li
-                            a.phone(href=`tel:${phoneNumber}`)
+                            a.font-bold(href=`tel:${phoneNumber}`)
                                 +svgUse('whatsapp')
                                 b= phoneNumber
                         li
-                            a.phone(href=`tel:${phoneNumberMsc}`) 
+                            a.font-bold(href=`tel:${phoneNumberMsc}`) 
                                 +svgUse('phone')
                                 b= phoneNumberMsc + ' (Москва)'
                         li
-                            a.phone(href=`tel:${phoneNumberSpb}`) 
+                            a.font-bold(href=`tel:${phoneNumberSpb}`) 
                                 +svgUse('phone')
                                 b= phoneNumberSpb + ' (Санкт-Петербург)'
                         li
                             a.email(href=`mailto:${email}`)
                                 +svgUse('mail')
                                 span= email
-                div.workSchedule.flex.flex-col
+                div.workSchedule
                     span.title График работы
                     span= workSchedule
             div
@@ -35,7 +35,7 @@ footer.gradient-1
                     .btns
                         each value in socials
                             a(href=value.link)
-                                + svgUse(value.icon, 'border border-white rounded-full')
+                                + svgUse(value.icon)(class='border border-white rounded-full')
                 .links.gap-2
                     each item in footerLinks
                         a(href=item.link)= item.text
@@ -56,9 +56,10 @@ footer.gradient-1
                         a(href=paymentDetailsLink) Скачать реквизиты
 
 
-        .site-info.row.flex.flex-wrap.gap-3
-            span © Picture-Perfect, 2021-2021 
-            span |
-            a(href="/")=siteAddress
-            span |
-            a(href=`mailto:${email}`)= email
+        .row-3
+            .site-info
+                span © Picture-Perfect, 2021-2021 
+                span |
+                a(href="/")=siteAddress
+                span |
+                a(href=`mailto:${email}`)= email

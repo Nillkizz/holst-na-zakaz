@@ -1,78 +1,72 @@
 footer {
-  @apply text-white p-5 sm_p-14;
-  font-size: var(--fs1);
-  .title {
-    @apply mb-3 text-2xl font-bold;
-    font-family: Raleway;
-    font-size: var(--fs2);
-  }
-  .logo {
-    @apply font-bold no-underline;
-    font-family: Raleway;
-    font-size: var(--fs3);
-  }
-  .address {
-    font-family: Roboto;
-  }
-  .email {
-    font-family: Raleway;
-  }
-  .contacts {
-    @apply mb-8;
-    font-family: Roboto;
-    ul {
-      @apply flex flex-col gap-2;
-      li a {
-        @apply flex gap-3 ;
-      }
-    }
-  }
-  .workSchedule {
-    font-size: var(--fs1);
-    font-family: Roboto;
-  }
-  .socials {
+  @apply bg-gradient-1 text-white p-5 sm_p-14;
+  .wrapper {
+    @apply max-w-full w-max m-auto;
     .title {
-      @apply font-bold mb-8;
-      font-size: var(--fs2);
+      @apply mb-3 text-2xl font-bold font-raleway text-24;
     }
-    .btns {
-      @apply flex gap-3 mb-8;
-      svg {
-        height: 40px;
-        width: 40px;
+    .row-1 {
+      @apply mb-8 text-center md_text-left;
+      .logo {
+        @extend .logo;
+        @apply text-white text-24 xs_text-36;
       }
     }
-  }
-  .links {
-    @apply flex flex-col;
-    font-size: var(--fs1);
-  }
-  .cards,
-  .shipping {
-    .items {
-      @apply flex gap-3 mb-8;
-      svg {
-        height: 54px;
-        width: 54px;
+    .row-2 {
+      @apply mb-8 flex flex-wrap xl_gap-40 gap-12;
+      .address {
+        @apply font-roboto mb-8;
+      }
+      .email {
+        @apply font-raleway;
+      }
+      .contacts {
+        @apply mb-8 font-roboto;
+        ul {
+          @apply flex flex-col gap-2;
+          li a {
+            @apply flex gap-3;
+          }
+        }
+      }
+      .workSchedule {
+        @apply font-roboto flex flex-col;
+      }
+      .socials {
+        .btns {
+          @apply flex gap-3 mb-8;
+          svg {
+            height: 40px;
+            width: 40px;
+          }
+        }
+      }
+      .links {
+        @apply flex flex-col;
+      }
+      .cards,
+      .shipping {
+        .items {
+          @apply flex gap-3 mb-8;
+          svg {
+            height: 54px;
+            width: 54px;
+          }
+        }
+      }
+      .shipping {
+        .items {
+          svg {
+            height: 27px;
+            width: 100px;
+          }
+        }
       }
     }
-  }
-  .shipping {
-    .items {
-      svg {
-        height: 27px;
-        width: 100px;
+    .row-3{
+      .site-info {
+        @apply font-roboto flex flex-wrap gap-3;
       }
     }
-  }
-  .payment-details {
-    .links {
-      font-size: var(--fs1);
-    }
-  }
-  .site-info{
-    font-size: var(--fs1);
-    font-family: Roboto;
   }
 }
