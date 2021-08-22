@@ -1,0 +1,26 @@
+@import index.css
+@import variables
+@import fonts
+@import mixins
+@import templates
+@import components
+
+body 
+  @apply h-screen flex flex-col text-14 font-raleway text-color1
+
+svg 
+  height: 20px
+  width: 20px
+  fill: #3c3e42
+
+
+a:hover 
+  @apply underline
+
+
+.adaptive-gap
+    @apply gap-6 xl_gap-10 2xl_gap-12 
+
+
+@import parts/header
+@import parts/footer
