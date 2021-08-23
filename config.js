@@ -10,13 +10,13 @@ const path = {
     },
     src: {
         pug: [`${srcFolder}/**/*.pug`, `!${srcFolder}/parts/**/*.pug`],
-        scss: `${srcFolder}/scss/index.scss`,
+        sass: `${srcFolder}/sass/main.sass`,
         js: `${srcFolder}/js/index.js`,
         assets: `${srcFolder}/assets/**/*`,
     },
     watch: {
         pug: `${srcFolder}/**/*.pug`,
-        styles: `${srcFolder}/scss/**/*.{scss, css}`,
+        styles: `${srcFolder}/sass/**/*.{scss,sass, css}`,
         js: `${srcFolder}/js/**/*.js`,
         assets: `${srcFolder}/assets/**/*`,
     },

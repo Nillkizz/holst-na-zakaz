@@ -1,0 +1,17 @@
+.logo 
+  @apply font-raleway font-bold text-black uppercase no-underline
+
+
+.text-button 
+  @apply py-4 px-8 bg-gradient-1-to-white bg-right border border-white text-white transition-all duration-500 hover_bg-left hover_text-color1 hover_border-color3
+  background-size: 300%
+  &[disabled]
+    @apply bg-left text-color1 border-color3 cursor-default
+  &.inverted
+    @apply bg-left hover_bg-right text-color1 hover_text-white border-color3 hover_border-white
+    &[disabled]
+      @apply bg-right text-white border-white
+    
+
+.section_number
+  @apply text-144 w-max font-thin text-color3 opacity-10 absolute -z-1

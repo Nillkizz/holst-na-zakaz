@@ -1,0 +1,24 @@
++section('sec1', '01')
+    .order 
+        .title
+            h1 холст по фотографии&nbsp;
+            span со скидкой -25%
+        .description
+            .text.
+                Изготовление заказа от 30 минут #[br]
+                и бесплатная доставка по Москве
+            + textBtn().inverted Оформить заказ
+        .sm_img
+    .big_img
+        a.calculator(href="#sec3-calculator")
+            .row1
+                span.text Калькулятор стоимости
+            .row2
+                span.sec-number 03
+                + angle_arrow()
+    .mobile_description
+        .text.
+            Изготовление заказа от 30 минут #[br]
+            и бесплатная доставка по Москве
+            #[.section_number 01]
+        + textBtn().inverted Оформить заказ

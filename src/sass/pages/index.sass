@@ -1,0 +1,67 @@
+#sec1
+    .wrapper
+        @apply flex flex-col lg_flex-row mx-5 lg_ml-8 xl_ml-12 2xl_ml-20
+        height: calc(100vh - #{$header-height})
+        min-height: 550px
+        max-height: 800px
+        @media screen and (max-height: 700px) and (max-width:1080px)
+            min-height: 600px
+        %bottom_blocks
+            @apply absolute bottom-0 right-0 bg-cover
+
+            --width: 300px
+            @media screen and (max-width:1280px)
+                --width: 250px
+            @media screen and (min-width:1024px)
+                width: var(--width)
+                height: calc(var(--width) * .8)
+
+        .section_number
+            @extend .section_number
+            @apply text-350 hidden lg_block
+            line-height: 300px
+        .order
+            @apply lg_h-full lg_w-1/2 relative lg_pt-44
+            .title
+                @apply font-roboto text-24 sm_text-36 uppercase font-bold mb-3 flex flex-wrap
+            .description
+                @apply font-medium hidden lg_block
+                .text
+                    @apply mb-8
+                .text-button
+                    @apply hidden lg_block
+            .sm_img
+                @extend %bottom_blocks
+                @apply lg_block hidden
+                background-image: url('/assets/img/sec1_2.jpg')
+                
+        .big_img
+            @apply h-72 w-72 mb-28 lg_mb-0 lg_h-full lg_w-1/2 bg-cover bg-center relative
+            background-image: url('/assets/img/sec1_1.jpg')
+            @media screen and (max-width:1024px)
+                width: 80vw
+                height: 80vw
+            @media screen and (max-width:420px)
+                width: 75vw
+                height: 75vw
+            .calculator
+                @extend %bottom_blocks
+                @apply bg-gradient-1 lg_bg-none lg_bg-color3-60 lg_hover_bg-color3 lg_duration-500 border-20 border-white lg_border-none -right-16 -bottom-24 lg_bottom-0 lg_left-0 text-white px-6 pt-4 lg_py-4 lg_px-8 xl_py-12 xl_px-16 hover_no-underline
+                @media screen and (max-width:1024px)
+                    @apply w-full
+                .row1
+                    .text
+                        @apply text-14 sm_text-24 uppercase lg_font-bold
+                .row2
+                    @apply flex pr-4 lg_p-0 justify-between items-center
+                    .sec-number
+                        @apply text-54 lg_text-70 font-roboto font-thin
+        .mobile_description
+            @apply lg_hidden pt-8 flex flex-col
+            .text
+                @apply relative mb-6 pl-6
+                .section_number
+                    @apply block lg_hidden text-144 bottom-2 -left-2
+                    line-height: 100px
+            .text-button
+                @apply self-center

@@ -3,5 +3,19 @@ mixin svgUse( name )
         use(xlink:href=`/assets/icons.svg#${name}`)
 
 mixin textBtn()
-    button.text-button(class!=attributes.class)
+    button.text-button(class!=attributes.class, disabled!=attributes.disabled)
         block
+
+mixin section(id, number)
+    section(id=id)
+        .wrapper
+            .section_number=number
+            block
+
+mixin angle_arrow(size='30px', angle='45deg', thickness)
+    - 
+        var borders = {
+            t: thickness ? `border-t-${thickness}` : 'border-t',
+            r: thickness ? `border-r-${thickness}` : 'border-r',
+        }
+    div.angle_arrow(class=`${borders.t} ${borders.r}` style={height: size, width: size, transform: `rotate(${angle})`})

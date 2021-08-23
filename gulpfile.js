@@ -33,7 +33,7 @@ function html() {
 
 function styles() {
     const postcssConfig = require(configs.postcss)
-    return gulp.src(path.src.scss)
+    return gulp.src(path.src.sass)
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(postcss(postcssConfig))
