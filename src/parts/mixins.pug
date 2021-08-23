@@ -6,10 +6,12 @@ mixin textBtn()
     button.text-button(class!=attributes.class, disabled!=attributes.disabled)
         block
 
-mixin section(id, number)
+mixin section(id, number, h2)
     section(id=id)
         .wrapper
-            .section_number=number
+            .title
+                h2= h2
+                .section_number=number
             block
 
 mixin angle_arrow(size='30px', angle='45deg', thickness)

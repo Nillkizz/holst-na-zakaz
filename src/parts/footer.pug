@@ -35,7 +35,7 @@ footer
                     .btns
                         each value in socials
                             a(href=value.link)
-                                + svgUse(value.icon)(class='border border-white rounded-full')
+                                +svgUse(value.icon)(class='border border-white rounded-full')
                 .links.gap-2
                     each item in footerLinks
                         a(href=item.link)= item.text
@@ -44,12 +44,12 @@ footer
                     .title Принимаем к оплате
                     .items
                         each item in payments
-                            + svgUse(item.icon)
+                            +svgUse(item.icon)
                 .shipping 
                     .title Доставляем по РФ
                     .items
                         each item in shipping
-                            + svgUse(item.icon)
+                            +svgUse(item.icon)
                 .payment-details
                     .title Реквизиты
                     .links

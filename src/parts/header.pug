@@ -10,20 +10,20 @@ header
             a.phone(href=`tel:${phoneNumberMsc}`)= phoneNumberMsc
             .btns
                 a(href=messengers.whatsapp.link title='WhatsApp') 
-                    + svgUse('whatsapp')
+                    +svgUse('whatsapp')
                 a(href=`mailto:${email}` title='Email') 
-                    + svgUse('mail')
+                    +svgUse('mail')
     //- empty blocks for make navs and contacts block in center
     .empty.hidden.xl_block  
     .empty.hidden.2xl_block
 header.mobile
     button.menu
-        + svgUse('menu')
+        +svgUse('menu')
     a.logo(href='/')= brandName
     .nav-wrapper.hidden
         .close-wrapper
             button.close
-                + svgUse('cross')
+                +svgUse('cross')
         nav
             ul
                 each item in navItems
@@ -31,8 +31,8 @@ header.mobile
                         a(href=item.link)= item.text
         .contacts
             a(href=messengers.whatsapp.link title='WhatsApp')
-                + svgUse('whatsapp')
+                +svgUse('whatsapp')
             a(href=`mailto:${email}` title='Email')
-                + svgUse('mail')
+                +svgUse('mail')
             a(href=`tel:${phoneNumberMsc}`)
-                + svgUse('phone')
+                +svgUse('phone')
