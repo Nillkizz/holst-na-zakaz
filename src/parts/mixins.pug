@@ -8,8 +8,9 @@ mixin icon( name )
         img(src=url).icon&attributes(attributes)
         
 
-mixin textBtn()
+mixin textBtn(text)
     button.text-button&attributes(attributes)
+        span!= text
         block
 
 mixin section(id, number, h2)
