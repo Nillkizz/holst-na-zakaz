@@ -3,7 +3,7 @@
 
 
 .text-button 
-  @apply py-4 px-8 bg-gradient-1-to-white bg-right border border-white text-white transition-all duration-500 hover_bg-left hover_text-color1 hover_border-color3
+  @apply py-4 px-8 bg-gradient-1-to-transparent bg-right border border-white text-white transition-all duration-500 hover_bg-left hover_text-color1 hover_border-color3
   background-size: 300%
   &[disabled]
     @apply bg-left text-color1 border-color3 cursor-default
@@ -15,11 +15,17 @@
 section
   @apply mb-12
   .wrapper 
-    @apply px-32
+    @apply px-8 lg_px-32
     .title
-      @apply pt-12 relative
+      @apply relative mb-8 lg_mb-20 px-12 lg_px-0 pt-12
       h2 
-        @apply text-36
+        @apply text-18 lg_text-36 font-semibold
   .section_number
-    @apply text-144 w-max font-raleway font-thin text-color3 opacity-10 absolute bottom-3 -left-20 -z-1
+    @apply text-70 lg_text-144 w-max font-raleway font-thin text-color3 opacity-10 absolute lg_-top-3 -top-2 left-0 lg_-left-20 -z-1
     line-height: 100px
+
+.blured-ellipse
+  @apply absolute -z-1 opacity-10 bg-color3
+  width: 666px
+  height: 752px
+  filter: blur(300px)

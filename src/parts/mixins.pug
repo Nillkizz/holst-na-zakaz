@@ -1,13 +1,19 @@
-mixin svgUse( name )
-    svg( class='fill-current' class!=attributes.class )
-        use(xlink:href=`/assets/icons.svg#${name}`)
+mixin icon( name )
+    - var is_sprite = name.startsWith('sprite-')
+    - var url = '/assets/img/icons/' + (is_sprite ? `sprite.svg#${name.replace('sprite-', '')}` : `${name}.svg`)
+    if (is_sprite)
+        svg.icon.fill-current&attributes(attributes)
+                use(xlink:href=url)
+    else 
+        img(src=url).icon&attributes(attributes)
+        
 
 mixin textBtn()
-    button.text-button(class!=attributes.class, disabled!=attributes.disabled)
+    button.text-button&attributes(attributes)
         block
 
 mixin section(id, number, h2)
-    section(id=id)
+    section(id=id)&attributes(attributes)
         .wrapper
             .title
                 h2= h2

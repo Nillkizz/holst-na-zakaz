@@ -12,19 +12,19 @@ footer
                     ul 
                         li
                             a.font-bold(href=`tel:${phoneNumber}`)
-                                +svgUse('whatsapp')
+                                +icon('sprite-whatsapp')
                                 b= phoneNumber
                         li
                             a.font-bold(href=`tel:${phoneNumberMsc}`) 
-                                +svgUse('phone')
+                                +icon('sprite-phone')
                                 b= phoneNumberMsc + ' (Москва)'
                         li
                             a.font-bold(href=`tel:${phoneNumberSpb}`) 
-                                +svgUse('phone')
+                                +icon('sprite-phone')
                                 b= phoneNumberSpb + ' (Санкт-Петербург)'
                         li
                             a.email(href=`mailto:${email}`)
-                                +svgUse('mail')
+                                +icon('sprite-mail')
                                 span= email
                 div.workSchedule
                     span.title График работы
@@ -35,7 +35,7 @@ footer
                     .btns
                         each value in socials
                             a(href=value.link)
-                                +svgUse(value.icon)(class='border border-white rounded-full')
+                                +icon(value.icon)(class='border border-white rounded-full')
                 .links.gap-2
                     each item in footerLinks
                         a(href=item.link)= item.text
@@ -44,12 +44,12 @@ footer
                     .title Принимаем к оплате
                     .items
                         each item in payments
-                            +svgUse(item.icon)
+                            +icon(item.icon)
                 .shipping 
                     .title Доставляем по РФ
                     .items
                         each item in shipping
-                            +svgUse(item.icon)
+                            +icon(item.icon)
                 .payment-details
                     .title Реквизиты
                     .links

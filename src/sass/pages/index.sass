@@ -20,7 +20,7 @@
             @apply hidden
         .section_number
             @extend .section_number
-            @apply text-350 hidden lg_block -bottom-6 -left-5
+            @apply text-350 hidden lg_block top-auto -bottom-4 -left-5
             line-height: 300px
         .order
             @apply lg_h-full lg_w-1/2 relative lg_pt-44
@@ -63,7 +63,19 @@
             .text
                 @apply relative mb-6 pl-6
                 .section_number
-                    @apply block lg_hidden text-144 bottom-2 -left-2
+                    @apply block text-144 bottom-2 -left-2
                     line-height: 100px
             .text-button
                 @apply self-center
+
+#sec2-advantages
+    .advantages
+        @apply flex flex-wrap gap-y-8
+        .wrap
+            @apply flex flex-col lg_gap-12 lg_w-1/2 gap-y-8 lg_gap-y-20
+            .adv
+                @apply flex items-center lg_items-start gap-8 
+                .icon
+                    @apply h-8 w-8 lg_h-20 lg_w-20
+                .text
+                    @apply lg_pt-2
