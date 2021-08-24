@@ -96,13 +96,8 @@
 
 
 #sec4-our_works
-    
-    .container 
-        // max-width: 700px
-        margin: 0 auto
-    
     .slider__wrapper 
-        overflow: hidden
+        @apply overflow-x-hidden
     .slider__control
         @apply bg-transparent hidden lg_flex
         &:before
@@ -117,13 +112,13 @@
                 @apply border-r rotate-45
 
     .slider__item 
-        @apply relative flex max-w-full justify-center items-center
+        @apply relative flex justify-center items-center
         &:before
             @apply bg-gradient-2 absolute inset-0
             content: ''
         flex: 0 0 100%
-        color: rgba(255,255,255, 0.8)
-        font-size: 7rem
+        img
+            @apply w-full
     
     .slider__indicators 
         @apply top-full mt-8 flex lg_hidden gap-3
