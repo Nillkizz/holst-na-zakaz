@@ -1,1 +1,31 @@
+mixin item(num, title, imgSrc)
+    .item
+        img(src=imgSrc)
+        .section_number!=num
+        .content
+            .title!=title
+            block
+
 +section('sec6', '06', 'Процесс работы') 
+    .items
+        +item('01', 'Заявка и расчет', '/assets/img/sec6_calculator.png')
+            .description.
+                Пришлите нам фото#[br.hidden.lg_block]
+                для обработки,#[br.lg_hidden] и наши#[br.hidden.lg_block]
+                специалисты свяжутся#[br.hidden.lg_block]
+                с Вами
+        +item('02', 'Заявка и расчет', '/assets/img/sec6_handshake.png')
+            .description.
+                Наш дизайнер подготовит#[br.hidden.lg_block]
+                макет #[br.lg_hidden]и отправить вам на#[br.hidden.lg_block]
+                согласование
+        +item('03', 'Заявка и расчет', '/assets/img/sec6_printer.png')
+            .description.
+                После согласования#[br.hidden.lg_block] макета#[br.lg_hidden]
+                ваш заказ#[br.hidden.lg_block] поступает в производство
+
+        +item('04', 'Заявка и расчет', '/assets/img/sec6_shipping.png')
+            .description.
+                Бесплатная доставка#[br.hidden.lg_block]
+                по Москве. А также#[br]
+                возможна доставка#[br.hidden.lg_block] в любую точку России.
