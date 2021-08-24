@@ -3,6 +3,10 @@ extends parts/layouts/default.pug
 block variables
     - var TITLE = 'Холст на заказ'
 
+append head 
+    link(rel="stylesheet" href="/assets/css/chief-slider.min.css")
+    script(defer src="/assets/js/chief-slider.min.js")
+
 block content
     include parts/index/sec1.pug
     include parts/index/sec2.pug

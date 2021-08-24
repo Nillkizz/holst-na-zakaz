@@ -27,7 +27,8 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-1': 'linear-gradient(265.78deg, #DC5953 6.89%, #FD6F31 95.01%)',
-        'gradient-1-to-transparent': 'linear-gradient(265.78deg, #DC5953 6.89%, #FD6F31 30%, #FFF0 65%)'
+        'gradient-1-to-transparent': 'linear-gradient(265.78deg, #DC5953 6.89%, #FD6F31 30%, #FFF0 65%)',
+        'gradient-2': 'linear-gradient(180deg, rgba(220, 89, 83, 0.06) 0%, rgba(74, 17, 15, 0.24) 100%)'
       },
       fontFamily: {
         raleway: ['Raleway'],
@@ -50,6 +51,7 @@ module.exports = {
         '-1': '-1',
       },
       borderWidth: {
+        '1': '1px',
         '20': '20px',
       },
       scale: {
