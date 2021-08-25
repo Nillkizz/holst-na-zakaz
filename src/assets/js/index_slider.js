@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const slider = document.querySelector('#sec4-our_works .slider');
+    const sliderSelector = '#sec4-our_works .slider'
+    const slider = document.querySelector(sliderSelector);
     const slider_indicators = slider.querySelector('.slider__indicators');
 
     let slides = Array.from(slider.querySelectorAll('.slider__item'))
@@ -11,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     Array.from(slider.querySelectorAll('.slider__item')).forEach(function (slide) {
         if (slides.indexOf(slide) === -1) slide.remove();
     })
-
     for (let i = 0; i < slides.length; i++) {
         const indicator = document.createElement('li');
         indicator.dataset.slideTo = i;
@@ -19,7 +19,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (slides.length > 1) {
-        const slider = new ChiefSlider('#sec4-our_works .slider', {
+        const slider = new ChiefSlider(sliderSelector, {
+            loop: true
+        });
+    } else {
+        slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const sliderSelector = '#sec7-examples_and_prices .slider'
+    const slider = document.querySelector(sliderSelector);
+    const slider_indicators = slider.querySelector('.slider__indicators');
+
+    let slides = Array.from(slider.querySelectorAll('.slider__item'))
+
+    for (let i = 0; i < slides.length; i++) {
+        const indicator = document.createElement('li');
+        indicator.dataset.slideTo = i;
+        slider_indicators.appendChild(indicator);
+    }
+
+    if (slides.length > 3) {
+        const slider = new ChiefSlider(sliderSelector, {
             loop: true
         });
     } else {

@@ -1,1 +1,65 @@
+- 
+    var items = [
+        {
+            images: ['/assets/img/sec7_1.jpg'],
+            size: '30 x 30',
+            old_price: '1577 р',
+            new_price: '980 р'
+        },
+        {
+            images: ['/assets/img/sec7_2.jpg'],
+            size: '30 x 30',
+            old_price: '1577 р',
+            new_price: '980 р'
+        },
+        {
+            images: ['/assets/img/sec7_3.jpg'],
+            size: '30 x 30',
+            old_price: '1577 р',
+            new_price: '980 р'
+        },
+        {
+            images: ['/assets/img/sec7_3.jpg'],
+            size: '30 x 30',
+            old_price: '1577 р',
+            new_price: '980 р'
+        },
+        {
+            images: ['/assets/img/sec7_3.jpg'],
+            size: '30 x 30',
+            old_price: '1577 р',
+            new_price: '980 р'
+        },
+    ]
+
+
+mixin item(images, size, old_price, new_price)
+    .item_wrapper
+        img(src=images[0])
+        .content
+            .params
+                .param
+                    span Размер
+                    span= size
+                .param
+                    span Старая цена
+                    span.line-through= old_price
+                .param
+                    span Новая цена
+                    span= new_price
+            +textBtn('Заказать')
+
+
+
 +section('sec7-examples_and_prices', '07', 'Цены и примеры') 
+    .container
+        .slider
+            .slider__wrapper
+                .slider__items
+                    each item in items
+                        .slider__item
+                            +item(item.images, item.size, item.old_price, item.new_price)
+
+            a.slider__control(data-slide='prev')
+            a.slider__control(data-slide='next')
+            ol.slider__indicators

@@ -93,24 +93,8 @@
 
 
 
-
-
 #sec4-our_works
-    .slider__wrapper 
-        @apply overflow-x-hidden
-    .slider__control
-        @apply bg-transparent hidden lg_flex
-        &:before
-            @apply bg-none w-4 h-4 border-t border-gray-900
-        &:nth-child(2)
-            @apply -left-10
-            &:before
-                @apply border-l -rotate-45
-        &:nth-child(3)
-            @apply -right-10
-            &:before
-                @apply border-r rotate-45
-
+    @apply px-4
     .slider__item 
         @apply relative flex justify-center items-center
         &:before
@@ -120,13 +104,6 @@
         img
             @apply w-full
     
-    .slider__indicators 
-        @apply top-full mt-8 flex lg_hidden gap-3
-        li
-            @apply bg-transparent border-1 border-color3 h-4 w-4 rounded-full box-border
-            &.active
-                @apply bg-gradient-1 border-none
-
 #sec5
     .good
         @apply flex-col
@@ -153,3 +130,32 @@
                 @apply ml-10
                 .title
                     @apply px-0 pt-8 mb-3 font-semibold text-18
+
+#sec7-examples_and_prices
+    @apply px-4
+    .slider__items
+        .slider__item 
+            @apply flex justify-center p-6 
+            max-width: 100%
+            flex: 0 0 100%
+            @media screen and (min-width:1024px)
+                max-width: 33.33333333%
+                flex: 0 0 33.33333333%
+            .item_wrapper
+                @apply grid grid-rows-2
+                box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)
+                .content
+                    @apply pt-4 lg_pt-8 px-4 lg_px-14 flex flex-col
+                    .params
+                        @apply lg_mb-8
+                        .param 
+                            @apply flex justify-between mb-4
+
+
+    .slider__indicators
+        @apply lg_flex
+        li
+            @apply lg_h-1 lg_rounded-none lg_border-none lg_bg-color3 lg_opacity-10 lg_w-32
+            &.active
+                @apply lg_bg-none lg_opacity-50
+        
