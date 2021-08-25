@@ -15,10 +15,10 @@ mixin textBtn(text)
 
 mixin section(id, number, h2)
     section(id=id)&attributes(attributes)
+        .title
+            h2!= h2
+            .section_number=number
         .wrapper
-            .title
-                h2!= h2
-                .section_number=number
             block
 
 mixin angle_arrow(size='30px', angle='45deg', thickness)

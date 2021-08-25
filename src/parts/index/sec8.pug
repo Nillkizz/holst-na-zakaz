@@ -1,1 +1,24 @@
+mixin item(avatar, text, inst)
+    .item_wrapper
+        if avatar
+            img.avatar(src=avatar)
+        else 
+            .avatar
+        .content
+            .text= text
+            .inst= '@' + inst
+
+
+
 +section('sec8-reviews', '08', 'Отзывы') 
+    .title Малая часть отзывов о нас
+    .slider
+        .slider__wrapper
+            .slider__items
+                each review in reviews
+                    .slider__item
+                        +item(review.avatar, review.text, review.inst)
+
+        a.slider__control(data-slide='prev')
+        a.slider__control(data-slide='next')
+        ol.slider__indicators

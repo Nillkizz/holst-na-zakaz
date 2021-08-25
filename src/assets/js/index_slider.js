@@ -48,3 +48,28 @@ document.addEventListener('DOMContentLoaded', function () {
         slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
     }
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.screen.width >= 1280) return;
+    const sliderSelector = '#sec8-reviews .slider'
+    const slider = document.querySelector(sliderSelector);
+    const slider_indicators = slider.querySelector('.slider__indicators');
+
+    let slides = Array.from(slider.querySelectorAll('.slider__item'))
+
+    for (let i = 0; i < slides.length; i++) {
+        const indicator = document.createElement('li');
+        indicator.dataset.slideTo = i;
+        slider_indicators.appendChild(indicator);
+    }
+
+    if (slides.length > 1) {
+        const slider = new ChiefSlider(sliderSelector, {
+            loop: true
+        });
+    } else {
+        slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
+    }
+});

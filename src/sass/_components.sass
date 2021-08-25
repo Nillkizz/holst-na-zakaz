@@ -14,18 +14,42 @@
     
 section
   @apply mb-12
-  .wrapper 
-    @apply px-8 lg_px-32
-    .title
-      @apply relative mb-8 lg_mb-20 px-12 lg_px-0 pt-12
-      h2 
-        @apply text-18 lg_text-36 font-semibold
+  .title
+    @apply relative mb-8 lg_mb-20 px-16 lg_px-32 pt-11
+    h2 
+      @apply text-18 lg_text-36 font-semibold
   .section_number
-    @apply text-70 lg_text-144 w-max font-raleway font-thin text-color3 opacity-10 absolute lg_-top-3 -top-2 left-0 lg_-left-20 -z-1
+    @apply text-70 lg_text-144 w-max font-raleway font-thin text-color3 opacity-10 absolute lg_-top-3 -top-2 left-6 lg_left-12 -z-1
     line-height: 100px
+  .wrapper
+    @apply px-8 lg_px-20
 
 .blured-ellipse
   @apply absolute -z-1 opacity-10 bg-color3
   width: 666px
   height: 752px
   filter: blur(300px)
+
+.slider
+    .slider__wrapper 
+        @apply overflow-x-hidden
+    .slider__control
+        @apply bg-transparent hidden lg_block focus_bg-transparent hover_bg-transparent bg-none lg_flex cursor-pointer
+        &:before
+            @apply w-4 h-4 border-t border-gray-900
+            background-image: none!important
+        &:nth-child(2)
+            @apply -left-10
+            &:before
+                @apply border-l -rotate-45
+        &:nth-child(3)
+            @apply -right-10
+            &:before
+                @apply border-r rotate-45
+
+    .slider__indicators 
+        @apply top-full mt-8 flex lg_hidden gap-3
+        li
+            @apply bg-transparent border-1 border-color3 h-4 w-4 rounded-full box-border
+            &.active
+                @apply bg-gradient-1 border-none
