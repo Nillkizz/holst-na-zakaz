@@ -1,16 +1,15 @@
 +section('sec4-our_works', '04', 'Наши работы') 
-    .container
-        .slider
-            .slider__wrapper
-                .slider__items
-                    for image in ourWorks.images
-                        .slider__item
-                            img(src=image.link)
-                    for image in ourWorks.imagesMobile
-                        .slider__item.mobile
-                            img(src=image.link)
+    .slider
+        .slider__wrapper
+            .slider__items
+                for image in ourWorks.images
+                    .slider__item
+                        img(src=image.link)
+                for image in ourWorks.imagesMobile
+                    .slider__item.mobile
+                        img(src=image.link)
 
-            a.slider__control(href='#' data-slide='prev')
-            a.slider__control(href='#' data-slide='next')
-            ol.slider__indicators
+        a.slider__control(href='#' data-slide='prev')
+        a.slider__control(href='#' data-slide='next')
+        ol.slider__indicators
 

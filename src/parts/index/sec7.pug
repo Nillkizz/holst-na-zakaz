@@ -52,14 +52,13 @@ mixin item(images, size, old_price, new_price)
 
 
 +section('sec7-examples_and_prices', '07', 'Цены и примеры') 
-    .container
-        .slider
-            .slider__wrapper
-                .slider__items
-                    each item in items
-                        .slider__item
-                            +item(item.images, item.size, item.old_price, item.new_price)
+    .slider
+        .slider__wrapper
+            .slider__items
+                each item in items
+                    .slider__item
+                        +item(item.images, item.size, item.old_price, item.new_price)
 
-            a.slider__control(data-slide='prev')
-            a.slider__control(data-slide='next')
-            ol.slider__indicators
+        a.slider__control(data-slide='prev')
+        a.slider__control(data-slide='next')
+        ol.slider__indicators

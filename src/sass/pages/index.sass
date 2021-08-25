@@ -95,27 +95,33 @@
 
 #sec4-our_works
     @apply px-4
-    .slider__item 
-        @apply relative flex justify-center items-center
-        &:before
-            @apply bg-gradient-2 absolute inset-0
-            content: ''
-        flex: 0 0 100%
-        img
-            @apply w-full
+    .slider
+        @apply mx-auto
+        @media screen and (max-width:1024px)
+            max-width: 360px
+        .slider__item 
+            @apply relative flex justify-center items-center
+            &:before
+                @apply bg-gradient-2 absolute inset-0
+                content: ''
+            flex: 0 0 100%
+            img
+                @apply w-full
     
 #sec5
-    .good
-        @apply flex-col
-        max-width: 460px
-        img
-            @apply mb-10
-        h3.title
-            @apply text-18 font-semibold lg_text-24 pt-0 mb-3 px-0
-        .description
-            @apply mb-12
-            p
-                @apply mb-1
+    .goods
+        @apply flex flex-wrap gap-16 lg_gap-48
+        .good
+            @apply flex-col lg_w-2/5
+            max-width: 460px
+            img
+                @apply mb-10
+            h3.title
+                @apply text-18 font-semibold lg_text-24 pt-0 mb-3 px-0
+            .description
+                @apply mb-12
+                p
+                    @apply mb-1
 
 #sec6
     .items
@@ -132,25 +138,37 @@
                     @apply px-0 pt-8 mb-3 font-semibold text-18
 
 #sec7-examples_and_prices
-    @apply px-4
-    .slider__items
-        .slider__item 
-            @apply flex justify-center p-6 
-            max-width: 100%
-            flex: 0 0 100%
-            @media screen and (min-width:1024px)
-                max-width: 33.33333333%
-                flex: 0 0 33.33333333%
-            .item_wrapper
-                @apply grid grid-rows-2
-                box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)
-                .content
-                    @apply pt-4 lg_pt-8 px-4 lg_px-14 flex flex-col
-                    .params
-                        @apply lg_mb-8
-                        .param 
-                            @apply flex justify-between mb-4
-
+    .slider 
+        @apply px-0 2xl_px-24
+        @media screen and (max-width:1024px)
+            @apply mx-auto
+            max-width: 500px
+        .slider__items
+            .slider__item 
+                @apply flex justify-center p-6 
+                max-width: 100%
+                flex: 0 0 100%
+                @media screen and (min-width:1024px)
+                    max-width: 50%
+                    flex: 0 0 50%
+                @media screen and (min-width:1280px)
+                    max-width: 33.33333333%
+                    flex: 0 0 33.33333333%
+                .item_wrapper
+                    @apply grid grid-rows-2
+                    box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)
+                    .content
+                        @apply pt-4 lg_pt-8 px-4 lg_px-14 flex flex-col
+                        .params
+                            @apply lg_mb-8
+                            .param 
+                                @apply flex justify-between mb-4
+    
+    .slider__control
+        &:nth-child(2)
+            @apply -left-4 lg_-left-10
+        &:nth-child(3)
+            @apply -right-4 lg_-right-10
 
     .slider__indicators
         @apply lg_flex
