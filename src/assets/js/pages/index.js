@@ -73,3 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
         slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const accordionSelector = '#sec9 .questions'
+    const accordion = document.querySelector(accordionSelector);
+    new Accordeon(accordeon = accordion);
+})

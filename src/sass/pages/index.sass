@@ -216,4 +216,24 @@
                     @apply lg_h-1 lg_rounded-none lg_border-none lg_bg-color3 lg_opacity-10 lg_w-32
                     &.active
                         @apply lg_bg-none lg_opacity-50
-            
+
+    
+#sec9
+    .wrapper 
+        @apply flex flex-col gap-8 lg_flex-row-reverse lg_justify-between lg_gap-36
+        .image
+            @apply flex-shrink-0
+        .questions
+            @apply w-full
+            .quest
+                @apply mb-6 cursor-pointer
+                .question
+                    @apply font-bold flex justify-between
+                    .angle-arrow
+                        @apply border-gray-900 duration-500
+                    &[aria-expanded="true"]
+                        .angle-arrow
+                            @apply rotate-135
+                .answer 
+                    .collapse-body
+                        @apply pt-3 cursor-default

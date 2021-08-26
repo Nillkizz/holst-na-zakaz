@@ -1,1 +1,16 @@
+- var numOfCheckboxes = 0
+mixin question(question, answer, num)
+    .quest
+        .question(data-tsi-toggle="collapse", data-tsi-target=`.answer.faq-${num}`)!= question
+            +angle_arrow('15px').right
+        .answer(class=`faq-${num}`)
+            .collapse-body!= answer
+
+
 +section('sec9', '09', 'Часто задаваемые вопросы') 
+    .image
+        img(src='/assets/img/sec9_1.jpg')
+    .questions(data-tsi-accordeon)
+        - var i = 0
+        each quest in faq 
+            +question(quest.question, quest.answer, i++)
