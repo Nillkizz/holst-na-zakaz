@@ -1,1 +1,16 @@
 +section('sec10', '10', 'Оставьте заявку и мы с радостью<br> ответим на все ваши вопросы') 
+    .image 
+        img(src="/assets/img/sec10_1.jpg")
+    form
+        label.name
+            span.text Как вас зовут?
+            input(name='name')
+        label.email
+            span.text Ваш email
+            input(name='email')
+        label.phone
+            span.text Ваш номер телефона
+            input(name='phone')
+        .agreement.
+            Нажимая на кнопку “Подписаться”, я соглашаюсь на обработку моих персональных данных и ознакомлен(а) с Условиями конфиденциальности. 
+        +textBtn('Отправить').submit(type='submit')

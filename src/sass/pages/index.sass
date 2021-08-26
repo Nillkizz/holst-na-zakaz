@@ -237,3 +237,21 @@
                 .answer 
                     .collapse-body
                         @apply pt-3 cursor-default
+
+#sec10
+    .wrapper
+        @apply lg_flex gap-12
+        .image
+            @apply hidden lg_block lg_w-1/2 ml-12
+        form
+            @apply flex flex-col gap-8 lg_w-1/2
+            label
+                @apply flex flex-col gap-3
+                .text 
+                    @apply font-semibold
+                input
+                    @apply bg-white p-4 border border-color3
+            .agreement
+                @apply text-14 font-thin 
+            .submit
+                @apply w-56
