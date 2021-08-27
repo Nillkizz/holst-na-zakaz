@@ -28,3 +28,9 @@ mixin angle_arrow(size='30px', thickness)
             r: thickness ? `border-r-${thickness}` : 'border-r',
         }
     div.angle-arrow(class=`${borders.t} ${borders.r}` style={'--size': size, height: 'var(--size)', width:  'var(--size)'})&attributes(attributes)
+
+
+mixin radial(num)
+    -var i = 0
+    while i++ < num
+        .radial

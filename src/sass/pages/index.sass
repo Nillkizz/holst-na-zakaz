@@ -1,3 +1,11 @@
+.radial
+  @apply absolute
+  opacity: .2
+  z-index: -3
+  width: 1000px
+  height: 1100px
+  background-image: radial-gradient(#DC5953 0%, transparent 70%)
+
 #sec1
     &>.title
         @apply hidden
@@ -69,6 +77,28 @@
                 @apply self-center
 
 #sec2-advantages
+    .radial:nth-child(1)
+        right: -250px
+        top: -450px
+        @media screen and (max-width:1024px)
+            scale: .8
+            top: -500px
+        @media screen and (max-width:640px)
+            right: auto
+            left: -60px
+
+    .radial:nth-child(2)
+        @apply hidden lg_block
+        transform: scale(.6)
+        right: 50px
+        top: -150px
+    .radial:nth-child(3)
+        @apply hidden lg_block
+        transform: scale(.6)
+        transform: scale(.4)
+        top: -140px
+        left: -180px
+
     .advantages
         @apply flex flex-wrap gap-y-8
         .wrap
@@ -95,6 +125,20 @@
 
 #sec4-our_works
     .wrapper
+        .radial:nth-child(1)
+            right: -500px
+            top: -130px
+            @media screen and (max-width:1024px)
+                scale: .8
+                top: 100px
+        .radial:nth-child(2)
+            @apply hidden lg_block
+            left: -400px
+            top: -200px
+        .radial:nth-child(3)
+            @apply hidden lg_block
+            transform: scale(.5)
+
         .slider
             @apply mx-auto
             @media screen and (max-width:1024px)
@@ -109,6 +153,10 @@
                     @apply w-full
     
 #sec5
+    .radial:nth-child(1)
+        @apply lg_hidden
+        top: 450px
+        left: -400px
     .goods
         @apply flex flex-wrap gap-16 lg_gap-48
         .good
@@ -124,6 +172,11 @@
                     @apply mb-1
 
 #sec6
+    .radial
+        right: -400px
+        top: -400px
+        @media screen and (max-width: 640px)
+            top: 200px
     .items
         @apply flex flex-wrap xl_justify-around gap-12 lg_gap-16
         .item
@@ -140,6 +193,11 @@
 #sec7-examples_and_prices
     .wrapper
         @apply px-0 lg_px-32
+        .radial:nth-child(1)
+            @apply hidden lg_block
+            transform: scale(.5)
+            top: -500px
+            left: -400px
         .slider 
             @apply px-0 2xl_px-24
             @media screen and (max-width:1024px)
@@ -157,7 +215,7 @@
                         max-width: 33.33333333%
                         flex: 0 0 33.33333333%
                     .item_wrapper
-                        @apply flex-col
+                        @apply flex-col bg-white
                         box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)
                         .content
                             @apply py-4 lg_py-8 px-4 lg_px-14 flex flex-col
@@ -182,6 +240,17 @@
 #sec8-reviews
     .wrapper
         @apply px-2 lg_px-32
+        .radial:nth-child(1)
+            transform: scale(.5)
+            top: -500px
+            right: -400px
+            @media screen and (max-width: 1280px)
+                right: auto
+                left: -400px
+        .radial:nth-child(2)
+            @apply hidden xl_block
+            left: -300px
+            top: 0
         .title 
             @apply p-0 m-0 pl-6 font-semibold mb-3
         .slider 
@@ -194,7 +263,7 @@
                     max-width: 100%
                     flex: 0 0 100%
                     .item_wrapper
-                        @apply p-6 flex gap-8
+                        @apply p-6 flex gap-8 bg-white
                         box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)
                         .avatar
                             @apply h-24 w-24 flex-shrink-0 xl_self-center bg-gray-300 rounded-full
@@ -220,9 +289,17 @@
     
 #sec9
     .wrapper 
-        @apply flex flex-col gap-8 lg_flex-row-reverse lg_justify-between lg_gap-36
+        @apply flex flex-col gap-8 xl_flex-row-reverse xl_justify-between xl_gap-36
         .image
-            @apply flex-shrink-0
+            @apply flex-shrink-0 w-max max-w-full relative
+            .radial:nth-child(1)
+                transform: scale(.8)
+                top: -500px
+                right: -350px
+                @media screen and (min-width: 1280px)
+                    top: -400px
+                    right: -400px
+
         .questions
             @apply w-full
             .quest
@@ -241,6 +318,20 @@
 #sec10
     .wrapper
         @apply lg_flex gap-12
+        .radial:nth-child(1)
+            transform: scale(.5)
+            top: -500px
+            left: -400px
+            @media screen and (max-width:1024px)
+                transform: scale(1)
+                top: -150px
+
+        .radial:nth-child(2)
+            @apply hidden lg_block
+            transform: scale(.5)
+            right: -400px
+            bottom: -600px
+            
         .image
             @apply hidden lg_block lg_w-1/2 ml-12
         form
