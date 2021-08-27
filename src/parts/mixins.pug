@@ -1,3 +1,9 @@
+mixin wrapLink(link, prefix='', onlyBlock=false)
+    a(href= prefix+link)&attributes(attributes)
+        block
+        unless onlyBlock
+            |#[!= text || link]
+
 mixin icon( name )
     - var is_sprite = name.startsWith('sprite-')
     - var url = '/assets/img/icons/' + (is_sprite ? `sprite.svg#${name.replace('sprite-', '')}` : `${name}.svg`)

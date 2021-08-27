@@ -306,6 +306,7 @@
                 @apply mb-6 cursor-pointer
                 .question
                     @apply font-bold flex justify-between
+                    max-width: 500px
                     .angle-arrow
                         @apply border-gray-900 duration-500
                     &[aria-expanded="true"]
@@ -313,7 +314,11 @@
                             @apply rotate-135
                 .answer 
                     .collapse-body
-                        @apply pt-3 cursor-default
+                        @apply pt-3 cursor-default text-16
+                        ul
+                            @apply list-inside list-disc
+                        p
+                            @apply mb-1
 
 #sec10
     .wrapper

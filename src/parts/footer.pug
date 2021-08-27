@@ -6,26 +6,23 @@ footer
             div
                 .address
                     span Бесплатный звонок по РФ:#[br]
-                    a.font-bold(href=`tel:${freePhoneNumber}`)!= freePhoneNumber + '<br>'
+                    +wrapLink(phones.free, 'tel:').font-bold
+                    br
                     span!= address
                 .contacts
                     ul 
                         li
-                            a.font-bold(href=`tel:${phoneNumber}`)
-                                +icon('sprite-whatsapp')
-                                b= phoneNumber
+                            +icon('sprite-whatsapp')
+                            +wrapLink(phones.whatsapp, 'tel:').font-bold
                         li
-                            a.font-bold(href=`tel:${phoneNumberMsc}`) 
-                                +icon('sprite-phone')
-                                b= phoneNumberMsc + ' (Москва)'
+                            +icon('sprite-phone')
+                            +wrapLink(phones.msc, 'tel:').font-bold
                         li
-                            a.font-bold(href=`tel:${phoneNumberSpb}`) 
-                                +icon('sprite-phone')
-                                b= phoneNumberSpb + ' (Санкт-Петербург)'
+                            +icon('sprite-phone')
+                            +wrapLink(phones.spb, 'tel:').font-bold
                         li
-                            a.email(href=`mailto:${email}`)
-                                +icon('sprite-mail')
-                                span= email
+                            +icon('sprite-mail')
+                            +wrapLink(email, 'mailto:').font-bold
                 div.workSchedule
                     span.title График работы
                     span= workSchedule

@@ -7,7 +7,7 @@ header
                     li
                         a(href=item.link)= item.text
         .contacts
-            a.phone(href=`tel:${phoneNumberMsc}`)= phoneNumberMsc
+            +wrapLink(phones.msc, 'tel:')
             .btns
                 a(href=messengers.whatsapp.link title='WhatsApp') 
                     +icon('sprite-whatsapp')
@@ -34,5 +34,5 @@ header.mobile
                 +icon('sprite-whatsapp')
             a(href=`mailto:${email}` title='Email')
                 +icon('sprite-mail')
-            a(href=`tel:${phoneNumberMsc}`)
+            a(href=`tel:${phones.msc}`)
                 +icon('sprite-phone')

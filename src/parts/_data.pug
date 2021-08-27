@@ -1,9 +1,12 @@
 - var brandName = 'picture-perfect'
 - var siteAddress = 'picture-perfect.ru'
-- var phoneNumberMsc = '+7 (495) 115-38-16' // Main number
-- var phoneNumber = '+7 (968) 603-85-98'
-- var freePhoneNumber = '8 (800) 302-2532'
-- var phoneNumberSpb = '+7 (812) 408-08-17'
+- 
+    var phones = {
+        msc: '+7 (495) 115-38-16', // Main number
+        free: '8 (800) 302-2532',
+        whatsapp: '+7 (968) 603-85-98',
+        spb: '+7 (812) 408-08-17',
+    }
 - var email = 'zakaz@picture-perfect.ru'
 - var address = 'Адрес: г. Москва<br>МКАД 24 км вл. 3'
 - var workSchedule = "ПН-ПТ - c 10:00 до 18:00"
@@ -159,22 +162,61 @@
     var faq = [
         {
             question: 'Можно ли с нами связаться?',
-            answer: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, ut. Facilis, est repudiandae quis qui vitae facere doloribus ipsum officiis error enim voluptas dolore, consequuntur nobis minus odit animi mollitia aut culpa!'
+            answer: `<p>Вы можете позвонить нам по телефону.</p>
+                <p>Для вашего удобства на нашем сайте представлены 3 телефона: <br>
+                    <ul>
+                        <li>Бесплатный звонок по РФ: ${wrapLink(phones.free, 'tel:')}</li>
+                        <li>Телефон: ${wrapLink(phones.whatsapp, 'tel:')}</li>
+                        <li>Телефон: ${wrapLink(phones.msc, 'tel:')}</li>
+                    </ul>
+                </p>
+                <p>Вы можете написать нам в чат на сайте.</p>
+                <p>Можно написать нам в WhatsApp или Viber.</p>
+                <p>Написать нам на почту ${wrapLink(email, 'email:')}</p>
+                <p>Написать нам в Skype Holst-na-zakaz.ru</p>`
         },
         {
             question: 'Если у меня нет цифровой фотографии?',
-            answer: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, ut. Facilis, est repudiandae quis qui vitae facere doloribus ipsum officiis error enim voluptas dolore, consequuntur nobis minus odit animi mollitia aut culpa!'
+            answer: `<p>Если у вас фотография на бумаги и нет ее в цифровом виде, то вы можете привезти ее к нам в офис и мы ее совершенно бесплатно отсканируем.</p>
+                <p>Наш курьер может приехать к вам и забрать фотографию.<br>Доставка по Москве 450 руб.</p>`
         },
         {
             question: 'Сколько времени изготовляется заказ?',
-            answer: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, ut. Facilis, est repudiandae quis qui vitae facere doloribus ipsum officiis error enim voluptas dolore, consequuntur nobis minus odit animi mollitia aut culpa!'
+            answer: `<p>Если вам нужно просто печать на холсте без художественной обработки, то заказ изготовим в течение 1 часа + время на доставку.</p>
+                <p>Заказ с художественной обработкой заминает 2-3 дня.</p>`
         },
         {
             question: 'Нужна ли предоплата?',
-            answer: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, ut. Facilis, est repudiandae quis qui vitae facere doloribus ipsum officiis error enim voluptas dolore, consequuntur nobis minus odit animi mollitia aut culpa!'
+            answer: 'Вы оплачиваете заказ только при получении.'
         },
         {
-            question: 'Какие гарантии вы даёте?',
-            answer: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, ut. Facilis, est repudiandae quis qui vitae facere doloribus ipsum officiis error enim voluptas dolore, consequuntur nobis minus odit animi mollitia aut culpa!'
+            question: 'Доставляете ли вы в другие города?',
+            answer: 'Мы работаем по всей России и ее пределах. Заказ мы отправим службой СДЭК. Стоимость доставки напрямую зависит от вашего региона и параметров заказа.'
+        },
+        {
+            question: 'Как получить готовый заказ?',
+            answer: `<p>В любое удобное для вас время готовый заказ вам доставит курьер.</p>
+                <p>Доставка по Москве в пределах пешей доступности от метро бесплатно.</p>
+                <p>Доставка по Москве осуществляется и в выходные дни до 22:00.</p>
+                <p>Также у вас есть возможность забрать товар лично по адресу Большой Факельный переулок, 1. Как до нас добраться можно посмотреть тут.</p>`
+        },
+        {
+            question: 'Как оплатить заказ?',
+            answer: `<p>Оплатить наличными в нашем офисе в Москве по адресу Большой Факельный переулок, 1.</p>
+                <p>Заплатить курьеру, который доставит ваш заказ к вам домой, на работу в офис или в любое удобное место.</p>
+                <p>Провести оплату электронным способом — на карту банка или через сервис Яндекс.Касса.</p>
+                <p>Возможна оплата на расчетный счет. Курьером вам доставят все закрывающие документы.</p>`
+        },
+        {
+            question: 'Если мне не понравится макет?',
+            answer: 'Если макет вам не понравился, то мы изменим его по вашим пожеланиям.'
+        },
+        {
+            question: 'Как увидеть макет до получения?',
+            answer: 'Макет после изготовление будет вам направлен для подтверждения.'
         },
     ]
+
+
+
+- function wrapLink(link, prefix, text) { return `<a href="${prefix + link}">${text ?? link}</a>`}
