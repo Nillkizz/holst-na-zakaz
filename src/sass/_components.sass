@@ -1,16 +1,24 @@
+@use "sass:map"
+
 .logo 
   @apply font-raleway font-bold text-black uppercase no-underline
 
 
 .text-button 
-  @apply py-4 px-8 bg-gradient-1-to-transparent bg-right border border-white text-white transition-all duration-500 hover_bg-left hover_text-color1 hover_border-color3
   background-size: 300%
-  &[disabled]
-    @apply bg-left text-color1 border-color3 cursor-default
+  @apply py-4 px-10 bg-gradient-1-to-transparent border transition-all duration-500
+  &:not(.inverted)
+    @apply bg-right border-white text-white
+    &[disabled]
+      @apply bg-left text-color1 border-color3 cursor-default
+    &:not(.static)
+      @apply hover_bg-left hover_text-color1 hover_border-color3
   &.inverted
-    @apply bg-left hover_bg-right text-color1 hover_text-white border-color3 hover_border-white
+    @apply bg-left text-color1 border-color3
     &[disabled]
       @apply bg-right text-white border-white
+    &:not(.static)
+      @apply hover_bg-right hover_text-white hover_border-white
     
 section
   @apply mb-12
@@ -22,7 +30,7 @@ section
     @apply text-70 lg_text-144 w-max font-raleway font-thin text-color3 opacity-10 absolute lg_-top-3 -top-2 left-6 lg_left-12 -z-1
     line-height: 100px
   .wrapper
-    @apply px-8 lg_px-20
+    @apply px-6 lg_px-20
 
 .slider
     .slider__wrapper 
@@ -47,6 +55,31 @@ section
             @apply bg-transparent border-1 border-color3 h-4 w-4 rounded-full box-border
             &.active
                 @apply bg-gradient-1 border-none
+.slider
+  .swiper
+      @apply h-full w-full
+      .swiper-wrapper
+          @apply flex 
+  @mixin swiper_button($name)
+    $direction: ('prev': 'left', 'next': 'right')
+    $rotate-angle: ('prev': '-rotate-135', 'next': 'rotate-45')
+    &-#{$name}
+        --size: 3.5rem
+        @apply opacity-100 duration-200 -#{map.get($direction, $name)}-7 p-2
+        width: var(--size)
+        height: var(--size)
+        top: calc(50% - var(--size) / 2)
+        &.swiper-button-disabled
+            @apply opacity-0
+        &::after
+            content: ''
+            @apply h-full w-full border-t border-r border-gray-500 #{map.get($rotate-angle, $name)}
+            width: 80%
+            height: 80%
+
+  .swiper-button
+      +swiper_button('prev')
+      +swiper_button('next')
 
 .angle-arrow
   &.top

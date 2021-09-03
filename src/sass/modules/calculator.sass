@@ -1,0 +1,185 @@
+@mixin control_element
+    width: 100px
+    @apply border border-color3 flex justify-center items-center cursor-pointer text-14
+    @media screen and (max-width: 1024px)
+        @apply p-3 
+        height: 40px
+
+.app
+    @apply flex flex-col lg_flex-row gap-8 lg_gap-32
+    opacity: 1
+    transition: opacity 1s
+    &[x-cloak]
+        opacity: 0
+    .calculator
+        @apply flex flex-col gap-8 justify-between text-16 lg_text-18 w-full
+        @media screen and (min-width: 1024px)
+            max-width: 340px
+        .label
+            @apply flex items-end
+            .label__num
+                @apply text-color4 text-36 opacity-30 font-light leading-none font-roboto mr-5 pointer-events-none
+            .label__name
+                @apply pointer-events-none
+        .steps
+            @apply flex flex-col gap-5
+            .step
+                .label.step__label
+                    @apply cursor-pointer
+                    .label__arrow
+                        @apply ml-auto self-center pointer-events-none
+                        .angle-arrow
+                            @apply duration-500
+                    &[aria-expanded="true"]
+                        .label__arrow
+                            .angle-arrow
+                                transform: rotate(135deg)
+                .step__body
+                    .collapse-body
+                        @apply pt-8
+                        .controls
+                            @apply flex flex-col gap-8 lg_gap-4
+                            input
+                                @apply p-3 font-roboto text-center
+                                height: 40px
+            .step.sizes
+                .step__body
+                    .collapse-body
+                        @apply w-full flex justify-center
+                        .controls
+                            width: 240px
+                            .choices
+                                @apply flex flex-wrap gap-y-6 justify-between text-18
+                                .size
+                                    @apply p-0
+                                    width: 100px
+                                    height: 40px
+                            .inputs
+                                @apply flex items-center gap-3 text-18
+                                input
+                                    +control_element()
+            .step.processing
+                .step__body
+                    .collapse-body
+                        .controls
+                            @apply flex-row flex-wrap justify-center
+                            .proc
+                                +control_element()
+                                @apply lg_px-8
+                                width: 160px
+                                @media screen and (max-width: 1024px)
+                                    @apply px-1 
+                                @media screen and (min-width: 1024px)
+                                    width: 240px
+            .step.cover
+                .step__body
+                    .collapse-body
+                        .controls
+                            @apply flex-row flex-wrap justify-center
+                            .cover
+                                +control_element()
+                                @apply px-1
+                                width: 160px
+                                @media screen and (min-width: 1024px)
+                                    width: 240px
+            .step.frame
+                .step__body
+                    .collapse-body
+                        .controls
+                            @apply flex-row flex-wrap justify-center
+                            .select-frame
+                                +control_element()
+                                width: 160px
+                                @media screen and (min-width: 1024px)
+                                    width: 240px
+                .frames-modal
+                    @apply fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center z-10 p-3
+                    .close-wrapper
+                        @apply relative
+                        .close 
+                            @apply scale-125 absolute right-3 top-2 p-2
+                    .body
+                        @apply bg-white shadow-1 max-w-full max-h-full
+                        width: 1300px
+                        --filter-width: 300px
+                        .content
+                            @apply py-8 pl-16 pr-10 flex flex-col gap-8 h-full max-h-full justify-between
+                            height: 600px
+                            @media screen and (min-width: 860px)
+                                @apply flex-row gap-0 
+                                .frames
+                                    width: calc(100% - var(--filter-width))
+                                @media screen and (min-height: 620px)
+                                    .swiper-wrapper
+                                        @apply flex-col flex-wrap
+                                        .swiper-slide
+                                            height: calc((100% - 30px) / 2)
+                            .filter
+                                @apply flex-shrink-0 flex flex-col gap-8
+                                width: var(--filter-width)
+                                .label
+                                    @apply mb-6
+                                .color 
+                                    .controls 
+                                        @apply flex flex-wrap gap-4
+                                        .color
+                                            @apply appearance-none w-8 h-8 lg_w-6 lg_h-6 text-gray-200
+                                            &:checked
+                                                @apply filter brightness-95
+                                                box-shadow: 0 0 5px black inset
+                                            &[value=""]
+                                                @apply bg-gray-300
+                                .width .controls 
+                                    @apply flex gap-6
+                                    .width 
+                                        @apply flex gap-4 items-center
+                                        input
+                                            +control_element()
+                                            @apply text-center text-24
+                                            appearance: textfield
+                                            width: 75px
+
+                            .frames.slider
+                                @apply relative px-8 text-14
+                                .swiper-slide
+                                    @apply flex flex-col justify-center text-14
+                                    img
+                                        @apply mr-auto
+                                    .width span
+                                        @apply font-roboto
+                                    button.select.text-button
+                                        @apply py-2 w-full
+                                            
+                                &.not-found
+                                    @apply w-full h-full text-center flex flex-col justify-center
+
+        .totalPrice
+            @apply flex flex-col justify-center text-center border border-color3 p-5 lg_text-18 lg_text-left xl_px-20 lg_py-8
+            .value
+                @apply font-roboto
+    .about-order
+        @apply w-full
+        .title
+            @apply p-0 mb-8 text-24
+        .content
+            @apply flex flex-col lg_flex-row gap-8 lg_gap-20 text-16
+            .select-photo
+                @apply w-full lg_w-auto flex justify-center lg_justify-start
+                .photo
+                    @apply bg-gray-200 flex-shrink-0 bg-cover bg-center bg-no-repeat relative
+                    width: 300px
+                    height: 450px
+                    .upload
+                        @apply bg-black bg-opacity-50 text-white absolute
+            .details
+                .data
+                    @apply w-full flex flex-col gap-5 mb-8
+                    .row
+                        @apply flex justify-between gap-2
+                        .value
+                            min-width: 180px
+                .submit
+                    @apply mb-5 w-full lg_w-auto
+                .caption
+                    @apply text-14 text-gray-500
+            

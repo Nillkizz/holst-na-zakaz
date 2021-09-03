@@ -115,7 +115,8 @@
 
 
 
-
+#sec3-calculator
+    @import modules/calculator
 
 
 
@@ -143,6 +144,11 @@
             @apply mx-auto
             @media screen and (max-width:1024px)
                 max-width: 360px
+            // .swiper-button
+            //     &-prev
+            //         @apply -left-10
+            //     &-next
+            //         @apply -right-10
             .slider__item 
                 @apply relative flex justify-center items-center
                 &:before
@@ -215,8 +221,7 @@
                         max-width: 33.33333333%
                         flex: 0 0 33.33333333%
                     .item_wrapper
-                        @apply flex-col bg-white
-                        box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)
+                        @apply flex-col bg-white shadow-1
                         .content
                             @apply py-4 lg_py-8 px-4 lg_px-14 flex flex-col
                             .params
@@ -263,8 +268,7 @@
                     max-width: 100%
                     flex: 0 0 100%
                     .item_wrapper
-                        @apply p-6 flex gap-8 bg-white
-                        box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)
+                        @apply p-6 flex gap-8 bg-white shadow-1
                         .avatar
                             @apply h-24 w-24 flex-shrink-0 xl_self-center bg-gray-300 rounded-full
                         .content 

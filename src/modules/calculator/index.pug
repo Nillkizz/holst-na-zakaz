@@ -1,1 +1,116 @@
-a asd
+include mixins.pug
+include ../../parts/mixins.pug
+
+.app(x-data="calculator" x-cloak)
+    script#calculatorJsonData(type="application/json")!= JSON.stringify(calculatorConfig)
+    .calculator
+        .steps(data-tsi-accordeon)
+            +step(1, 'sizes')
+                +block('body')
+                    .controls
+                        .choices
+                            template(x-for="sizeOption in data.steps[0].sizes")
+                                .size.font-roboto
+                                    +textBtn().size.static(
+                                        x-text="`${sizeOption.width}x${sizeOption.height}`"
+                                        @click="Object.assign(size, sizeOption)"
+                                        :class="{inverted: !isEqSizes(sizeOption, size)}"
+                                        )
+                        div Или введите вручную
+                        .inputs
+                            input(x-model="size.width")
+                            span x 
+                            input(x-model="size.height")
+            +step(2, 'processing')
+                +block('body')
+                    .controls
+                        template(x-for="proc in data.steps[1].processings")
+                            +textBtn().proc.static(
+                                x-text="proc.name"
+                                @click="Object.assign(processing, proc)"
+                                :class="{inverted: proc.name !== processing.name}"
+                                )
+            +step(3, 'cover')
+                +block('body')
+                    .controls
+                        template(x-for="coverOption in data.steps[2].covers")
+                            +textBtn().cover.static(
+                                x-text="coverOption.name"
+                                @click="Object.assign(cover, coverOption)"
+                                :class="{inverted: coverOption.name !== cover.name}"
+                                )
+            +step(4, 'frame')
+                +block('body')
+                    .controls 
+                        +textBtn().static.select-frame(x-bind="frames.openBtn")
+                +block('modal')
+                    .frames-modal(x-show="frames_modal_show" x-transition.scale.100.opacity.0.duration.400)
+                        .body(x-show="frames_modal_show" x-transition.duration.400.opacity.100.scale.95)
+                            .close-wrapper
+                                button.close(@click="frames_modal_show = false")
+                                    +icon('sprite-cross')
+                            .content
+                                .filter 
+                                    .color
+                                        .label                   
+                                            .label__num 01.
+                                            .label__name Цвет
+                                        .controls
+                                            template(x-for="i in frames.getColors()")
+                                                input.color(type="checkbox" x-model="frames.filter.colors" :value="i.hex" :title="i.name" :style="{backgroundColor: i.hex}")
+                                    .width
+                                        .label                   
+                                            .label__num 02.
+                                            .label__name Размер
+                                        .controls
+                                            .width.from от
+                                                input(type="number" x-model="frames.filter.widthFrom" step="0.1")
+                                            .width.to до
+                                                input(type="number" x-model="frames.filter.widthTo" step="0.1")
+                                .frames.slider(x-show="frames.getFilteredFrames().length")
+                                    .swiper.grid-2-rows
+                                        .swiper-wrapper
+                                            template(x-for="i in frames.getFilteredFrames()")
+                                                .swiper-slide
+                                                    img(:src="i.image")
+                                                    .material Материал: #[span(x-text="i.material")]
+                                                    .width() Ширина: #[span(x-text="i.width")] См
+                                                    .color() Цвет: #[span(x-text="i.color.name")]
+                                                    +textBtn().static.select(@click="frames.set(i)" :class="{inverted: i.id !== frames.frame.id}" x-text="i.id === frames.frame.id ? 'Выбрано' : 'Выбрать'")
+                                    .swiper-button-prev
+                                    .swiper-button-next
+                                template(x-if="!frames.getFilteredFrames().length") 
+                                    .frames.not-found
+                                        .error-text Ничего не найдено
+
+
+        .totalPrice
+            span Сумма заказа:
+            span.value(x-text="totalPrice() + ' р.'")
+                    
+    .about-order
+        .title Описание заказа
+        .content
+            .select-photo
+                .photo(x-bind="photo")
+                    input(type="file" x-ref="uploadPhoto" x-bind="photo.field").hidden
+                    +textBtn('Выбрать фото')(x-bind="photo.button").static.upload
+            .details
+                .data
+                    .row.size 
+                        span Размер
+                        span.value(x-text="`${size.width}x${size.height} см`")
+                    .row.processing 
+                        span Обработка
+                        span.value(x-text="processing.name")
+                    .row.cover
+                        span Покрытие
+                        span.value(x-text="cover.name")
+                    .row.frame
+                        span Багетные рамки
+                        span.value(x-text="frames.frame.name")
+                +textBtn('Оформить заказ').submit
+                div.caption Доставим бесплатно по Москве #[br]в пределах пешей доступности от метро
+    .order-modal                
+
+script(src="/assets/js/modules/calculator.js" defer)

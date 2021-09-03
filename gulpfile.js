@@ -2,6 +2,7 @@ const gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
 
     pug = require('gulp-pug'),
+    htmlmin = require('gulp-htmlmin'),
 
     sass = require('gulp-sass')(require('sass')),
     postcss = require('gulp-postcss'),
@@ -28,6 +29,7 @@ function php() {
 function html() {
     return gulp.src(path.src.pug)
         .pipe(pug())
+        .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest(path.build.html))
 }
 

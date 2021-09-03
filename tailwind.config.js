@@ -23,7 +23,8 @@ module.exports = {
         color1: '#3C3E42',
         color2: '#423C3C',
         color3: '#DC5953',
-        'color3-60': '#DC595399'
+        'color3-60': '#DC595399',
+        color4: '#FD6F31',
       },
       backgroundImage: {
         'gradient-1': 'linear-gradient(265.78deg, #DC5953 6.89%, #FD6F31 95.01%)',
@@ -62,7 +63,10 @@ module.exports = {
       rotate: {
         '135': '135deg',
         '-135': '-135deg',
-      }
+      },
+      boxShadow: {
+        '1': 'box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)',
+      },
     },
   },
   variants: {

@@ -1,0 +1,15 @@
+mixin step(step, classes)
+    block 
+    .step(class=classes)
+        .label.step__label(
+                data-tsi-toggle='collapse',
+                data-tsi-target=`.step${step}__body`,
+            )
+            .label__num(x-text=`String(${step}).padStart(2, 0) + "."`)
+            .label__name(x-text=`data.steps[${step-1}].name`)
+            .label__arrow
+                +angle_arrow('12px').right
+        div(class=`step${step}__body step__body collapse`)
+            .collapse-body
+                +block('body', true)
+        +block('modal', true)

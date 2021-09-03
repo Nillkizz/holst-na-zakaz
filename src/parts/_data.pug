@@ -217,6 +217,209 @@
         },
     ]
 
-
+- 
+    var calculatorConfig = {
+        base: {
+            price: 1590,
+            size: { width: 30,  height: 40 },
+            multiplier: 1.22,
+            subtract: -1
+        },
+        steps: [
+            {
+                name: 'Выберите размер',
+                sizes:[
+                    { width: 30,  height: 40 },
+                    { width: 40,  height: 60 },
+                    { width: 50,  height: 70 },
+                    { width: 60,  height: 90 },
+                    { width: 120, height: 80 },
+                ],
+                default: { width: 30,  height: 40 }
+            },
+            {
+                name: 'Дизайн-обработка',
+                processings: [
+                    {
+                        name: 'Без обработки',
+                        price: 0
+                    },
+                    {
+                        name: 'Живопись',
+                        price: 1500
+                    },
+                    {
+                        name: 'Портрет в образе',
+                        price: 1500
+                    },
+                    {
+                        name: 'Фотоколлаж',
+                        price: 1000
+                    },
+                    {
+                        name: 'Love is',
+                        price: 1000
+                    },
+                    {
+                        name: 'Фотомазайка',
+                        price: 1000
+                    },
+                    {
+                        name: 'Дрим арт',
+                        price: 1500
+                    },
+                    {
+                        name: 'Портрет маслом',
+                        price: 2500
+                    },
+                ],
+                default: {
+                    name: 'Без обработки',
+                    price: 0
+                },
+            },
+            {
+                name: 'Покрытие холста',
+                multiplier: 2,
+                covers: [
+                    { 
+                        name: 'Без покрытия',
+                        price: 0
+                    },
+                    { 
+                        name: 'Покрытие лаком',
+                        price: 120
+                    },
+                    { 
+                        name: 'Покрытие 3D гелем',
+                        price: 500
+                    },
+                ],
+                default: {
+                        name: 'Без покрытия',
+                        price: 0
+                }
+            },
+            {
+                name: 'Багетные рамки',
+                multiplier: 1.3,
+                frames: [
+                    { 
+                        id: 0,
+                        name: 'Коричневый пластик',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Пластик',
+                        width: 5.7,
+                        color: { name: 'Коричневый', hex: '#964B00'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 1,
+                        name: 'Зеленый металл',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Металл',
+                        width: 12,
+                        color: { name: 'Зеленый', hex: '#00ff00'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 2,
+                        name: 'Красное дерево',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Дерево',
+                        width: 20,
+                        color: { name: 'Красный', hex: '#ff0000'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 3,
+                        name: 'Синее папье маше',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Папье маше',
+                        width: 3,
+                        color: { name: 'Синий', hex: '#0000ff'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 4,
+                        name: 'Коричневый пластик',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Пластик',
+                        width: 5.7,
+                        color: { name: 'Коричневый', hex: '#964B00'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 5,
+                        name: 'Зеленый металл',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Металл',
+                        width: 12,
+                        color: { name: 'Зеленый', hex: '#00ff00'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 6,
+                        name: 'Красное дерево',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Дерево',
+                        width: 20,
+                        color: { name: 'Красный', hex: '#ff0000'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 7,
+                        name: 'Синее папье маше',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Папье маше',
+                        width: 3,
+                        color: { name: 'Синий', hex: '#0000ff'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 8,
+                        name: 'Коричневый пластик',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Пластик',
+                        width: 5.7,
+                        color: { name: 'Коричневый', hex: '#964B00'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 9,
+                        name: 'Зеленый металл',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Металл',
+                        width: 12,
+                        color: { name: 'Зеленый', hex: '#00ff00'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 10,
+                        name: 'Красное дерево',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Дерево',
+                        width: 20,
+                        color: { name: 'Красный', hex: '#ff0000'},
+                        price: 1500,
+                    },
+                    { 
+                        id: 11,
+                        name: 'Синее папье маше',
+                        image: '/assets/img/calculator/frames/frame1.png',
+                        material: 'Папье маше',
+                        width: 3,
+                        color: { name: 'Синий', hex: '#0000ff'},
+                        price: 1500,
+                    },
+                ],
+                default: {
+                        id: -1,
+                        name: 'Без рамки',
+                        price: 0
+                }
+            }
+        ]
+    }
 
 - function wrapLink(link, prefix, text) { return `<a href="${prefix + link}">${text ?? link}</a>`}
