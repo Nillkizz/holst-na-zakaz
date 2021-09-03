@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
+function headerInit() {
     const mobileHeader = document.querySelector('header.mobile'),
         menuBtn = mobileHeader.querySelector('button.menu'),
         navWrapper = mobileHeader.querySelector('.nav-wrapper'),
@@ -14,4 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (state !== undefined) return navWrapper.classList.toggle('hidden', state);
         return navWrapper.classList.toggle('hidden');
     }
-})
+}
+
+
+exports.header = headerInit;

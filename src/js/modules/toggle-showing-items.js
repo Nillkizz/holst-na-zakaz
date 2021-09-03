@@ -137,6 +137,7 @@ class Accordeon {
 
         this.conf = this._prepareConfig(config);
         if (accordeon == undefined) this.accordeon = this._getAccordeon();
+        else this.accordeon =accordeon;
         this.togglers = this.accordeon.querySelectorAll(this.SELECTORS.toggler);
         this.collapses = Array.from(this.togglers).map((el) => this.accordeon.querySelector(el.dataset.tsiTarget));
 
@@ -250,6 +251,9 @@ class Accordeon {
 
     _getAccordeon() { return document.querySelector(this.SELECTORS.accordeon) };
 }
+
+exports.ToggleShowingItems = ToggleShowingItems;
+exports.Accordeon = Accordeon;
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const tsiWrappers = document.querySelectorAll('[tsi-items-list-wrapper]');

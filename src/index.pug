@@ -5,24 +5,16 @@ block variables
 
 append head 
     link(rel="stylesheet" href="/assets/css/chief-slider.min.css")
-    script(defer src="/assets/js/chief-slider.min.js")
-    script(defer src="/assets/js/toggle-showing-items.js")
-
-    link(rel='stylesheet' href='https://unpkg.com/swiper@7/swiper-bundle.min.css')
-    script(src='https://unpkg.com/swiper@7/swiper-bundle.min.js')
 
 
 block content
-    //- include parts/index/sec1.pug
-    //- include parts/index/sec2.pug
+    include parts/index/sec1.pug
+    include parts/index/sec2.pug
     include parts/index/sec3.pug
-    //- include parts/index/sec4.pug
-    //- include parts/index/sec5.pug
-    //- include parts/index/sec6.pug
-    //- include parts/index/sec7.pug
-    //- include parts/index/sec8.pug
-    //- include parts/index/sec9.pug
-    //- include parts/index/sec10.pug
-    
-    //- script(src="/assets/js/pages/index.js")
-    script(defer src="/assets/js/alpinejs@3.2.4.js")
+    include parts/index/sec4.pug
+    include parts/index/sec5.pug
+    include parts/index/sec6.pug
+    include parts/index/sec7.pug
+    include parts/index/sec8.pug
+    include parts/index/sec9.pug
+    include parts/index/sec10.pug

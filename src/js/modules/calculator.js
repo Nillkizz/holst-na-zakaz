@@ -1,15 +1,13 @@
-document.addEventListener('alpine:init', () => {
+import Alpine from 'alpinejs';
+import { Accordeon } from './toggle-showing-items.js';
+import Swiper from 'swiper';
+
+export default () => {
+
     Alpine.data('calculator', () => {
         const jsonElement = document.getElementById('calculatorJsonData');
         const jsonData = JSON.parse(jsonElement.innerHTML)
         const data = {
-            init() {
-                window.addEventListener('resize', e => {
-                    console.log(window.innerWidth, window.innerHeight);
-                    console.log(this.frames.swiper)
-                });
-            },
-            
             data: { ...jsonData },
             size: jsonData.steps[0].default,
             processing: jsonData.steps[1].default,
@@ -40,11 +38,11 @@ document.addEventListener('alpine:init', () => {
                 data: '',
                 dataURL: '',
                 file: '',
-                [':style'](){
+                [':style']() {
                     return `background-image: url(${this.photo.dataURL});`;
                 },
                 field: {
-                    ['@change'](e){
+                    ['@change'](e) {
                         const file = e.target.files[0];
                         const image = new Image();
                         image.onload = () => {
@@ -53,23 +51,23 @@ document.addEventListener('alpine:init', () => {
                             canvas.height = image.height;
                             const ctx = canvas.getContext('2d');
                             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-                            
+
                             this.photo.file = file;
                             this.photo.dataURL = canvas.toDataURL(file.type);
                             this.photo.data = this.photo.dataURL.split(',').slice(-1)[0];
                         }
                         image.src = URL.createObjectURL(file);
-                        }
+                    }
                 },
                 button: {
-                    getEl(){ return document.querySelector('#sec3-calculator .about-order .photo .upload');},
-                    ['@click'](){this.$refs.uploadPhoto.click()},
-                    [':class'](){
-                        return {inverted: this.photo.dataURL.length}
+                    getEl() { return document.querySelector('#sec3-calculator .about-order .photo .upload'); },
+                    ['@click']() { this.$refs.uploadPhoto.click() },
+                    [':class']() {
+                        return { inverted: this.photo.dataURL.length }
                     },
-                    [':style'](){
+                    [':style']() {
                         return {
-                            bottom: !this.photo.dataURL.length ? `calc(50% - ${this.$el.offsetHeight / 2}px)`: '10px',
+                            bottom: !this.photo.dataURL.length ? `calc(50% - ${this.$el.offsetHeight / 2}px)` : '10px',
                             left: `calc(50% - ${this.$el.offsetWidth / 2}px)`
                         }
                     }
@@ -85,7 +83,7 @@ document.addEventListener('alpine:init', () => {
                         if (width > 860) return 2;
                         return 1;
                     }
-                    function getGridRows(){
+                    function getGridRows() {
                         if (height > 620 && width > 860) return 2;
                         return 1;
                     }
@@ -158,12 +156,13 @@ document.addEventListener('alpine:init', () => {
         jsonElement.remove();
         return data;
     });
-})
 
-document.addEventListener('DOMContentLoaded', () => {
-    const accordeonSelector = '#sec3-calculator .steps'
-    const accordeon = document.querySelector(accordeonSelector);
-    new Accordeon(accordeon);
+    const accordeonConfig = {
+        onlyOneExpanded: false
+    };
 
 
-})
+    Alpine.start();
+    new Accordeon(accordeonConfig);
+
+}

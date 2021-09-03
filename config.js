@@ -11,7 +11,7 @@ const path = {
     src: {
         pug: [`${srcFolder}/**/*.pug`, `!${srcFolder}/parts/**/*.pug`],
         sass: `${srcFolder}/sass/main.sass`,
-        js: `${srcFolder}/js/index.js`,
+        js: `${srcFolder}/js/main.js`,
         assets: `${srcFolder}/assets/**/*`,
     },
     watch: {
@@ -27,7 +27,24 @@ const path = {
 
 const configs = {
     postcss: './postcss.config.js',
+    webpack: {
+        output: {
+            filename: '[name].js'
+        },
+        module: {
+            rules: [
+                { 
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: '/node_modules/'
+                }
+            ]
+        },
+        devtool: 'source-map',
+        mode: 'production',
+    }
 }
+
 
 exports.path = path;
 exports.configs = configs;

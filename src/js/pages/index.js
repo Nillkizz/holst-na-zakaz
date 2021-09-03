@@ -1,4 +1,25 @@
-document.addEventListener('DOMContentLoaded', function () {
+import calculator from '../modules/calculator.js';
+import ChiefSlider from '../modules/chief-slider.min.js';
+import { Accordeon } from '../modules/toggle-showing-items.js';
+
+export default () => {
+    const sections = [
+        sec4,
+        sec7,
+        sec8,
+        sec9
+    ]
+    sections.forEach((section) => {
+        // try {
+        section();
+        // } catch (err) {
+        //     console.error(err);
+        // }
+    });
+    calculator();
+}
+
+function sec4() {
     const sliderSelector = '#sec4-our_works .slider'
     const slider = document.querySelector(sliderSelector);
     const slider_indicators = slider.querySelector('.slider__indicators');
@@ -25,9 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
     }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
+}
+function sec7() {
     const sliderSelector = '#sec7-examples_and_prices .slider'
     const slider = document.querySelector(sliderSelector);
     const slider_indicators = slider.querySelector('.slider__indicators');
@@ -47,11 +67,10 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
     }
-});
+}
 
 
-
-document.addEventListener('DOMContentLoaded', function () {
+function sec8() {
     if (window.screen.width >= 1280) return;
     const sliderSelector = '#sec8-reviews .slider'
     const slider = document.querySelector(sliderSelector);
@@ -72,10 +91,10 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
     }
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-    const accordionSelector = '#sec9 .questions'
-    const accordion = document.querySelector(accordionSelector);
-    new Accordeon(accordeon = accordion);
-})
+}
+function sec9(){
+    const accordeonSelector = '#sec9 .questions'
+    const accordeon = document.querySelector(accordeonSelector);
+    new Accordeon({}, accordeon);
+}

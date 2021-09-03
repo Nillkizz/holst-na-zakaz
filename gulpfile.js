@@ -14,6 +14,8 @@ const gulp = require('gulp'),
     del = require('del'),
     bs = require('browser-sync'),
 
+    webpack = require('webpack-stream'),
+
     { path, configs } = require('./config.js');
 
 function php() {
@@ -46,8 +48,7 @@ function styles() {
 
 function js() {
     return gulp.src(path.src.js)
-        .pipe(include())
-        .pipe(concat('main.js'))
+        .pipe(webpack(configs.webpack))
         .pipe(gulp.dest(path.build.js));
 }
 
@@ -82,12 +83,14 @@ function watchFiles() {
         .on('unlink', bs.reload)
         .on('change', bs.reload);
 }
-
 const build = gulp.series(clear, html, styles, js, assets);
 const buildPHP = gulp.series(clear, php, styles, js, assets);
 const serve = gulp.parallel(watchFiles, browserSync);
 
 exports.build = build;
 exports.buildPHP = buildPHP;
-exports.serve = gulp.series(build, serve);
+exports.serve = (() => {
+    configs.webpack.mode = 'development';
+    return gulp.series(build, serve);
+})();
 exports.clear = clear;
