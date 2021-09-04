@@ -1,3 +1,6 @@
+const isDev = true;
+
+
 const distFolder = 'dist',
     srcFolder = 'src';
 
@@ -26,6 +29,10 @@ const path = {
 }
 
 const configs = {
+    global: {
+        isDev: isDev,
+        isProd: !isDev
+    },
     postcss: './postcss.config.js',
     webpack: {
         output: {
@@ -33,7 +40,7 @@ const configs = {
         },
         module: {
             rules: [
-                { 
+                {
                     test: /\.js$/,
                     loader: 'babel-loader',
                     exclude: '/node_modules/'
@@ -41,7 +48,7 @@ const configs = {
             ]
         },
         devtool: 'source-map',
-        mode: 'production',
+        mode: isDev ? 'development' : 'production',
     }
 }
 

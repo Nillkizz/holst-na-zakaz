@@ -9,7 +9,7 @@ mixin question(question, answer, num)
 +section('sec9', '09', 'Часто задаваемые вопросы') 
     .image
         +radial(1)
-        img(src='/assets/img/sec9_1.jpg')
+        img(data-src='/assets/img/sec9_1.jpg').lazy
     .questions(data-tsi-accordeon)
         - var i = 0
         each quest in faq 

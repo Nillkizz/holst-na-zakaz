@@ -17,10 +17,10 @@
             .slider__items
                 for image in ourWorks.images
                     .slider__item
-                        img(src=image.link)
+                        img(data-src=image.link).lazy
                 for image in ourWorks.imagesMobile
                     .slider__item.mobile
-                        img(src=image.link)
+                        img(data-src=image.link).lazy
 
         a.slider__control(href='#' data-slide='prev')
         a.slider__control(href='#' data-slide='next')

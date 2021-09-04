@@ -1,6 +1,6 @@
 mixin item(num, title, imgSrc)
     .item
-        img(src=imgSrc)
+        img(data-src=imgSrc).lazy
         .section_number!=num
         .content
             .title!=title

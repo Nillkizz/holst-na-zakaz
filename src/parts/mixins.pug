@@ -15,6 +15,9 @@ mixin block(key, marker=false)
 
 
 mixin wrapLink(link, prefix='', onlyBlock=false)
+    if prefix == 'tel:'
+        - var text = link
+        - var link = link.match(/\d/g).join('')
     a(href= prefix+link)&attributes(attributes)
         block
         unless onlyBlock
@@ -27,7 +30,7 @@ mixin icon( name )
         svg.icon&attributes(attributes).fill-current
             use(xlink:href=url)
     else 
-        img(src=url).icon&attributes(attributes)
+        img(data-src=url).lazy.icon&attributes(attributes)
 
 
 mixin textBtn(text)
@@ -38,7 +41,8 @@ mixin textBtn(text)
 mixin section(id, number, h2)
     section(id=id)&attributes(attributes)
         .title
-            h2!= h2
+            if h2
+                h2!= h2
             .section_number=number
         .wrapper
             block

@@ -1,6 +1,6 @@
 mixin item(images, size, old_price, new_price)
     .item_wrapper
-        img(src=images[0])
+        img(data-src=images[0]).lazy
         .content
             .params
                 .param

@@ -38,8 +38,16 @@ export default () => {
                 data: '',
                 dataURL: '',
                 file: '',
+                sizes: {
+                    maxWidth: 300,
+                    maxHeight: 450,
+                    width: 300,
+                    height: 450,
+                },
                 [':style']() {
-                    return `background-image: url(${this.photo.dataURL});`;
+                    const height = this.photo.sizes.height;
+                    const width = this.photo.sizes.width;
+                    return `background-image: url(${this.photo.dataURL}); height: ${height}px; width: ${width}px`;
                 },
                 field: {
                     ['@change'](e) {
