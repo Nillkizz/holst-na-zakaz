@@ -1,7 +1,7 @@
 @mixin control_element
     width: 100px
     @apply border border-color3 flex justify-center items-center cursor-pointer text-14
-    @media screen and (max-width: 1024px)
+    @media (max-width: 1024px)
         @apply p-3 
         height: 40px
 
@@ -13,7 +13,7 @@
         opacity: 0
     .calculator
         @apply flex flex-col gap-8 justify-between text-16 lg_text-18 w-full
-        @media screen and (min-width: 1024px)
+        @media (min-width: 1024px)
             max-width: 340px
         .label
             @apply flex items-end
@@ -67,9 +67,9 @@
                                 +control_element()
                                 @apply lg_px-8
                                 width: 160px
-                                @media screen and (max-width: 1024px)
+                                @media (max-width: 1024px)
                                     @apply px-1 
-                                @media screen and (min-width: 1024px)
+                                @media (min-width: 1024px)
                                     width: 240px
             .step.cover
                 .step__body
@@ -80,7 +80,7 @@
                                 +control_element()
                                 @apply px-1
                                 width: 160px
-                                @media screen and (min-width: 1024px)
+                                @media (min-width: 1024px)
                                     width: 240px
             .step.frame
                 .step__body
@@ -90,7 +90,7 @@
                             .select-frame
                                 +control_element()
                                 width: 160px
-                                @media screen and (min-width: 1024px)
+                                @media (min-width: 1024px)
                                     width: 240px
                 .frames-modal
                     @apply fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center z-10 p-3
@@ -105,11 +105,11 @@
                         .content
                             @apply py-8 pl-16 pr-10 flex flex-col gap-8 h-full max-h-full justify-between
                             height: 600px
-                            @media screen and (min-width: 860px)
+                            @media (min-width: 860px)
                                 @apply flex-row gap-0 
                                 .frames
                                     width: calc(100% - var(--filter-width))
-                                @media screen and (min-height: 620px)
+                                @media (min-height: 620px)
                                     .swiper-wrapper
                                         @apply flex-col flex-wrap
                                         .swiper-slide

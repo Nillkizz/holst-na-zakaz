@@ -17,6 +17,7 @@
     "browser-sync": "^2.27.5",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-if": "^3.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",

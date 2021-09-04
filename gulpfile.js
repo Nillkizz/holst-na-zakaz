@@ -9,6 +9,7 @@ const gulp = require('gulp'),
 
     sass = require('gulp-sass')(require('sass')),
     postcss = require('gulp-postcss'),
+    gcmq = require('gulp-group-css-media-queries'),
 
 
     del = require('del'),
@@ -47,18 +48,19 @@ class Tasks {
             .pipe(bs.stream({ once: true }));
     }
     static sass() {
-        const postcssConfig = require(configs.postcss)
         return gulp.src(path.src.sass)
             .pipe(plumber())
             .pipe(gulpif(configs.global.isDev, sourcemaps.init()))
             .pipe(sass())
+            .pipe(postcss(configs.postcss.plugins('postcss-import', 'tailwindcss')))
+            .pipe(gulpif(configs.global.isProd, gcmq()))
+            .pipe(gulpif(configs.global.isProd, postcss(configs.postcss.plugins('postcss-csso', 'autoprefixer'))))
             .on('error',
                 notify.onError({
                     message: '<%= error.message %>',
                     title: 'Sass Error!',
                 })
             )
-            .pipe(postcss(postcssConfig))
             .pipe(gulpif(configs.global.isDev, sourcemaps.write()))
             .pipe(gulp.dest(path.build.css))
             .pipe(bs.stream({ once: true }));

@@ -11,19 +11,19 @@
         @apply hidden
     .wrapper
         @apply flex flex-col lg_flex-row ml-5 lg_ml-8 xl_ml-12 2xl_ml-20 px-0
-        @media screen and (min-width: 1024px)
+        @media (min-width: 1024px)
             height: calc(100vh - #{$header-height})
             min-height: 550px
             max-height: 800px
-        @media screen and (max-height: 700px) and (max-width:1080px)
+        @media (max-height: 700px) and (max-width:1080px)
             min-height: 600px
         %bottom_blocks
             @apply absolute bottom-0 right-0 bg-cover
 
             --width: 300px
-            @media screen and (max-width:1280px)
+            @media (max-width:1280px)
                 --width: 250px
-            @media screen and (min-width:1024px)
+            @media (min-width:1024px)
                 width: var(--width)
                 height: calc(var(--width) * .8)
         .section_number
@@ -48,16 +48,16 @@
         .big_img
             @apply h-72 w-72 lg_mb-0 lg_h-full lg_w-1/2 bg-cover bg-center relative
             background-image: url('/assets/img/sec1_1.jpg')
-            @media screen and (max-width:1024px)
+            @media (max-width:1024px)
                 width: 80vw
                 min-height: 80vw
-            @media screen and (max-width:420px)
+            @media (max-width:420px)
                 width: 75vw
                 min-height: 75vw
             .calculator
                 @extend %bottom_blocks
                 @apply bg-gradient-1 lg_bg-none lg_bg-color3-60 lg_hover_bg-color3 lg_duration-500 border-20 border-white lg_border-none -right-16 -bottom-24 lg_bottom-0 lg_left-0 text-white px-6 pt-4 lg_py-4 lg_px-8 xl_py-12 xl_px-16 hover_no-underline
-                @media screen and (max-width:1024px)
+                @media (max-width:1024px)
                     @apply w-full
                 .row1
                     .text
@@ -80,10 +80,10 @@
     .radial:nth-child(1)
         right: -250px
         top: -450px
-        @media screen and (max-width:1024px)
+        @media (max-width:1024px)
             scale: .8
             top: -500px
-        @media screen and (max-width:640px)
+        @media (max-width:640px)
             right: auto
             left: -60px
 
@@ -129,7 +129,7 @@
         .radial:nth-child(1)
             right: -500px
             top: -130px
-            @media screen and (max-width:1024px)
+            @media (max-width:1024px)
                 scale: .8
                 top: 100px
         .radial:nth-child(2)
@@ -142,7 +142,7 @@
 
         .slider
             @apply mx-auto
-            @media screen and (max-width:1024px)
+            @media (max-width:1024px)
                 max-width: 360px
             // .swiper-button
             //     &-prev
@@ -181,7 +181,7 @@
     .radial
         right: -400px
         top: -400px
-        @media screen and (max-width: 640px)
+        @media (max-width: 640px)
             top: 200px
     .items
         @apply flex flex-wrap gap-12 2xl_gap-16
@@ -206,7 +206,7 @@
             left: -400px
         .slider 
             @apply px-0 2xl_px-24
-            @media screen and (max-width:1024px)
+            @media (max-width:1024px)
                 @apply mx-auto
                 max-width: 500px
             .slider__items
@@ -214,10 +214,10 @@
                     @apply flex justify-center p-6 
                     max-width: 100%
                     flex: 0 0 100%
-                    @media screen and (min-width:1024px)
+                    @media (min-width:1024px)
                         max-width: 50%
                         flex: 0 0 50%
-                    @media screen and (min-width:1280px)
+                    @media (min-width:1280px)
                         max-width: 33.33333333%
                         flex: 0 0 33.33333333%
                     .item_wrapper
@@ -249,7 +249,7 @@
             transform: scale(.5)
             top: -500px
             right: -400px
-            @media screen and (max-width: 1280px)
+            @media (max-width: 1280px)
                 right: auto
                 left: -400px
         .radial:nth-child(2)
@@ -259,7 +259,7 @@
         .title 
             @apply p-0 m-0 pl-6 font-semibold mb-3
         .slider 
-            @media screen and (max-width:1024px)
+            @media (max-width:1024px)
                 @apply mx-auto
             .slider__items
                 @apply flex xl_grid xl_grid-cols-2
@@ -300,7 +300,7 @@
                 transform: scale(.8)
                 top: -500px
                 right: -350px
-                @media screen and (min-width: 1280px)
+                @media (min-width: 1280px)
                     top: -400px
                     right: -400px
 
@@ -331,7 +331,7 @@
             transform: scale(.5)
             top: -500px
             left: -400px
-            @media screen and (max-width:1024px)
+            @media (max-width:1024px)
                 transform: scale(1)
                 top: -150px
 

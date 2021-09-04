@@ -27,6 +27,44 @@ Example of use Accordeon:
     </div>
 </div>
  */
+function addStylesheet(styles) {
+    // Сначала необходимо создать новую таблицу стилей 
+    var styleElt, styleSheet;
+
+    if (document.createStyleSheet) { //Если определен IE API, использовать его
+        styleSheet = document.createStyleSheet();
+    }
+    else {
+        var head = document.getElementsByTagName("head")[0];
+        styleElt = document.createElement("style");		// Новый элемент <style>
+        head.appendChild(styleElt);						// Вставить в <head>
+
+        // Теперь новая таблица находится в конце массива
+        styleSheet = document.styleSheets[document.styleSheets.length - 1];
+    }
+
+    // Вставить стили в таблицу 
+    if (typeof styles === "string") {
+        // Аргумент содержит текстовое определение таблицы стилей
+        if (styleElt)
+            styleElt.innerHTML = styles;
+        else styleSheet.cssText = styles;	// IE API
+    }
+    else {
+        // Аргумент объект с правилами для вставки 
+        var i = 0;
+        for (selector in styles) {
+            if (styleSheet.insertRule) {
+                var rule = selector + " {" + styles[selector] + "}";
+                styleSheet.insertRule(rule, i++);
+            }
+            else {
+                styleSheet.addRule(selector, styles[selector], i++);
+            }
+        }
+    }
+}
+
 
 class ToggleShowingItems {
     constructor(config = {}) {
@@ -80,9 +118,10 @@ class ToggleShowingItems {
     }
     _initCss() {
         if (!window.TSI_stiles) {  // If no styles are added.
-            const sheet = window.document.styleSheets[0];
-            sheet.insertRule('.TSI-d-none { display: none!important; }', sheet.cssRules.length);
-            sheet.insertRule('a[tsi-toggle-button] { cursor: pointer!important; }', sheet.cssRules.length);
+            addStylesheet(`
+                .TSI-d-none { display: none!important; }
+                a[tsi-toggle-button] { cursor: pointer!important; }
+            `);
             window.TSI_stiles = true;
         }
     }
@@ -137,7 +176,7 @@ class Accordeon {
 
         this.conf = this._prepareConfig(config);
         if (accordeon == undefined) this.accordeon = this._getAccordeon();
-        else this.accordeon =accordeon;
+        else this.accordeon = accordeon;
         this.togglers = this.accordeon.querySelectorAll(this.SELECTORS.toggler);
         this.collapses = Array.from(this.togglers).map((el) => this.accordeon.querySelector(el.dataset.tsiTarget));
 
@@ -167,10 +206,11 @@ class Accordeon {
 
     _initCss() {
         if (!window.TSI_accordeon_stiles) {  // If no styles are added.
-            const sheet = window.document.styleSheets[0];
-            sheet.insertRule(`.collapse:not(.show) { display: none; }`, sheet.cssRules.length);
-            sheet.insertRule(`.collapsing.horizontal-collapse { width: 0; height: auto; transition: width .5s ease; }`, sheet.cssRules.length);
-            sheet.insertRule(`.collapsing { height: 0; overflow: hidden; transition: height .5s ease; }`, sheet.cssRules.length);
+            addStylesheet(`
+                .collapse:not(.show) { display: none; }
+                .collapsing.horizontal-collapse { width: 0; height: auto; transition: width .5s ease; } 
+                .collapsing { height: 0; overflow: hidden; transition: height .5s ease; }
+                `)
             window.TSI_accordeon_stiles = true;
         };
     };
@@ -214,7 +254,7 @@ class Accordeon {
             collapse.classList.add('show');
             collapse.style[dimension] = '';
         }, { once: true })
-        
+
         requestAnimationFrame(() => {
             if (this.conf.onlyOneExpanded) this._collapse(togglers);
             collapse.classList.remove('collapse');

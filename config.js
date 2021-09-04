@@ -33,7 +33,11 @@ const configs = {
         isDev: isDev,
         isProd: !isDev
     },
-    postcss: './postcss.config.js',
+    postcss: {
+        plugins(...names) {
+            return names.map(name => require(name));
+        },
+    },
     webpack: {
         output: {
             filename: '[name].js'
