@@ -167,25 +167,23 @@ class ToggleShowingItems {
 };
 
 class Accordeon {
-    constructor(config = {}, accordeon = undefined) {
+    constructor(accordeon = undefined) {
         this.SELECTORS = {
-            accordeon: '[data-tsi-accordeon]',
             toggler: '[data-tsi-toggle="collapse"]',
         };
+        this.accordeon = accordeon;
+        this.accordeon.accordeon = this;
+        this.update();
+    }
 
-
-        this.conf = this._prepareConfig(config);
-        if (accordeon == undefined) this.accordeon = this._getAccordeon();
-        else this.accordeon = accordeon;
+    collapseAll() { this._collapse(this.togglers) };
+    update(){
+        this.conf = this._prepareConfig();
         this.togglers = this.accordeon.querySelectorAll(this.SELECTORS.toggler);
         this.collapses = Array.from(this.togglers).map((el) => this.accordeon.querySelector(el.dataset.tsiTarget));
 
         this._init();
-
     }
-
-    collapseAll() { this._collapse(this.togglers) };
-
     _init() {
         this._initCss();
         this.collapses.forEach((el) => el.classList.toggle('collapse', true))
@@ -215,17 +213,18 @@ class Accordeon {
         };
     };
 
+    _isExpanded(elem){return JSON.parse(elem.getAttribute('aria-expanded'))}
+    _isNotExpand(elem){return JSON.parse(elem.getAttribute('not-expand') ?? false)}
     _toggle(toggler) {
-        const expanded = JSON.parse(toggler.getAttribute('aria-expanded'));
-        if (!expanded) {
+        if (!this._isExpanded(toggler)) {
             this._expand(toggler);
-        } else if (this.conf.clickForCollapse) {
+        } else if (!this.conf.stayExpanded) {
             this._collapse([toggler]);
         }
     };
     _collapse(togglers) {
         togglers.forEach(elem => {
-            if (JSON.parse(elem.getAttribute('aria-expanded'))) {
+            if (this._isExpanded(elem)) {
                 elem.setAttribute('aria-expanded', 'false');
                 const collapse = this.accordeon.querySelector(elem.dataset.tsiTarget);
                 const dimension = this._getDimension(collapse);
@@ -256,7 +255,8 @@ class Accordeon {
         }, { once: true })
 
         requestAnimationFrame(() => {
-            if (this.conf.onlyOneExpanded) this._collapse(togglers);
+            if (!this.conf.multiMode) this._collapse(togglers);
+            if (this._isNotExpand(toggler)) return;
             collapse.classList.remove('collapse');
             const size = this._getOriginSize(collapse);
             collapse.classList.add('collapsing');
@@ -281,15 +281,13 @@ class Accordeon {
             height: collapseBody.clientHeight
         }
     };
-    _prepareConfig(config) {
+    _prepareConfig() {
         const _config = {
-            clickForCollapse: true,
-            onlyOneExpanded: true
+            stayExpanded: this.accordeon.hasAttribute('stay-expanded'),
+            multiMode: this.accordeon.hasAttribute('multi-mode')
         }
-        return Object.assign(_config, config);
+        return _config;
     };
-
-    _getAccordeon() { return document.querySelector(this.SELECTORS.accordeon) };
 }
 
 exports.ToggleShowingItems = ToggleShowingItems;

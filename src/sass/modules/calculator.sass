@@ -12,7 +12,7 @@
     &[x-cloak]
         opacity: 0
     .calculator
-        @apply flex flex-col gap-8 justify-between text-16 lg_text-18 w-full
+        @apply flex flex-col gap-8 justify-between text-16 lg_text-18 w-full max-w-sm
         @media (min-width: 1024px)
             max-width: 340px
             min-width: 290px
@@ -63,11 +63,12 @@
                 .step__body
                     .collapse-body
                         .controls
-                            @apply flex-row flex-wrap justify-center
+                            @apply flex-row flex-wrap justify-center gap-2 
                             .proc
-                                +control_element()
-                                @apply px-1
-                                width: 160px
+                                @apply w-full
+                                button
+                                    +control_element()
+                                    @apply px-1 py-3 w-full
             .step.cover
                 .step__body
                     .collapse-body
@@ -159,7 +160,7 @@
         .title
             @apply p-0 mb-8 text-24
         .content
-            @apply flex flex-col lg_flex-row gap-8 xl_gap-20 text-16
+            @apply flex flex-col md_flex-row md_justify-between gap-8 xl_gap-20 text-16
             .select-photo
                 @apply w-full lg_w-auto flex justify-center lg_justify-start
                 .photo-wrap

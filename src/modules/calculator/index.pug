@@ -4,7 +4,7 @@ include ../../parts/mixins.pug
 .app(x-data="calculator" x-cloak)
     script#calculatorJsonData(type="application/json")!= JSON.stringify(calculatorConfig)
     .calculator
-        .steps(data-tsi-accordeon)
+        .steps(data-tsi-accordeon multi-mode)
             +step(1, 'sizes')
                 +block('body')
                     .controls
@@ -23,13 +23,20 @@ include ../../parts/mixins.pug
                             input(x-model="size.height")
             +step(2, 'processing')
                 +block('body')
-                    .controls
-                        template(x-for="proc in data.steps[1].processings")
-                            +textBtn().proc.static(
-                                x-text="proc.name"
-                                @click="Object.assign(processing, proc)"
-                                :class="{inverted: proc.name !== processing.name}"
-                                )
+                    .controls(data-tsi-accordeon)
+                        template(x-for="(proc, i) in data.steps[1].processings")
+                            .proc
+                                +textBtn().static(
+                                    x-text="proc.name"
+                                    @click="Object.assign(processing, proc)"
+                                    :class="{inverted: proc.name !== processing.name}"
+                                    data-tsi-toggle='collapse'
+                                    :not-expand="i==0"
+                                    :data-tsi-target="`.processing_preview-${i}`"
+                                    )
+                                div(:class="`processing_preview-${i} collapse`")
+                                    .collapse-body
+                                        span(x-text="i")
             +step(3, 'cover')
                 +block('body')
                     .controls
@@ -88,7 +95,7 @@ include ../../parts/mixins.pug
         .totalPrice
             span Сумма заказа:
             span.value(x-text="totalPrice() + ' р.'")
-                    
+
     .about-order
         .title Описание заказа
         .content

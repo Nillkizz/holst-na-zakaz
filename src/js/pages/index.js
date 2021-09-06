@@ -7,15 +7,13 @@ export default () => {
         sec4,
         sec7,
         sec8,
-        sec9
     ]
     sections.forEach((section) => {
-        // try {
         section();
-        // } catch (err) {
-        //     console.error(err);
-        // }
     });
+    document.querySelectorAll('[data-tsi-accordeon]').forEach(accordeon=>{
+        new Accordeon(accordeon);
+    })
     calculator();
 }
 
@@ -92,9 +90,4 @@ function sec8() {
         slider.querySelectorAll('.slider__control').forEach(function (control) { control.style.display = 'none' })
     }
 
-}
-function sec9(){
-    const accordeonSelector = '#sec9 .questions'
-    const accordeon = document.querySelector(accordeonSelector);
-    new Accordeon({}, accordeon);
 }

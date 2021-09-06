@@ -1,5 +1,4 @@
 import Alpine from 'alpinejs';
-import { Accordeon } from './toggle-showing-items.js';
 import Swiper from 'swiper';
 
 export default () => {
@@ -19,6 +18,9 @@ export default () => {
 
                 this.$watch('frames_modal_show', e=>{
                     document.documentElement.classList.toggle('stop-scrolling', e)
+                })
+                this.$nextTick(() => {
+                    this.$el.querySelector('.processing [data-tsi-accordeon]').accordeon.update()
                 })
             },
 
@@ -214,12 +216,6 @@ export default () => {
         return data;
     });
 
-    const accordeonConfig = {
-        onlyOneExpanded: false
-    };
-
 
     Alpine.start();
-    new Accordeon(accordeonConfig);
-
 }
