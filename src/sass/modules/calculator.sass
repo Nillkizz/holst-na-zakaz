@@ -6,7 +6,7 @@
         height: 40px
 
 .app
-    @apply flex flex-col lg_flex-row gap-8 lg_gap-32
+    @apply flex flex-col lg_flex-row gap-8 lg_gap-12 xl_gap-32
     opacity: 1
     transition: opacity 1s
     &[x-cloak]
@@ -15,6 +15,7 @@
         @apply flex flex-col gap-8 justify-between text-16 lg_text-18 w-full
         @media (min-width: 1024px)
             max-width: 340px
+            min-width: 290px
         .label
             @apply flex items-end
             .label__num
@@ -65,12 +66,8 @@
                             @apply flex-row flex-wrap justify-center
                             .proc
                                 +control_element()
-                                @apply lg_px-8
+                                @apply px-1
                                 width: 160px
-                                @media (max-width: 1024px)
-                                    @apply px-1 
-                                @media (min-width: 1024px)
-                                    width: 240px
             .step.cover
                 .step__body
                     .collapse-body
@@ -93,27 +90,25 @@
                                 @media (min-width: 1024px)
                                     width: 240px
                 .frames-modal
-                    @apply fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center z-10 p-3
+                    @apply fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center z-20 p-3
                     .close-wrapper
                         @apply relative
                         .close 
                             @apply scale-125 absolute right-3 top-2 p-2
                     .body
-                        @apply bg-white shadow-1 max-w-full max-h-full
-                        width: 1300px
+                        @apply bg-white shadow-1 max-w-full max-h-full overflow-y-auto
+                        width: 100%
                         --filter-width: 300px
                         .content
-                            @apply py-8 pl-16 pr-10 flex flex-col gap-8 h-full max-h-full justify-between
-                            height: 600px
-                            @media (min-width: 860px)
-                                @apply flex-row gap-0 
+                            @apply py-8 pl-16 pr-10 flex flex-col md_flex-row gap-8 md_gap-0 h-full max-h-full justify-between
+                            height: 650px
+                            @media (min-width: 768px)
                                 .frames
                                     width: calc(100% - var(--filter-width))
-                                @media (min-height: 620px)
-                                    .swiper-wrapper
-                                        @apply flex-col flex-wrap
-                                        .swiper-slide
-                                            height: calc((100% - 30px) / 2)
+                                .swiper-wrapper
+                                    @apply flex-col flex-wrap
+                                    .swiper-slide
+                                        height: calc((100% - 30px) / 2)
                             .filter
                                 @apply flex-shrink-0 flex flex-col gap-8
                                 width: var(--filter-width)
@@ -142,11 +137,13 @@
                             .frames.slider
                                 @apply relative px-8 text-14
                                 .swiper-slide
-                                    @apply flex flex-col justify-center text-14
+                                    @apply text-14
                                     img
-                                        @apply mr-auto
-                                    .width span
-                                        @apply font-roboto
+                                        @apply mb-2
+                                    .details
+                                        @apply mb-2
+                                        .width span
+                                            @apply font-roboto
                                     button.select.text-button
                                         @apply py-2 w-full
                                             
@@ -162,11 +159,14 @@
         .title
             @apply p-0 mb-8 text-24
         .content
-            @apply flex flex-col lg_flex-row gap-8 lg_gap-20 text-16
+            @apply flex flex-col lg_flex-row gap-8 xl_gap-20 text-16
             .select-photo
                 @apply w-full lg_w-auto flex justify-center lg_justify-start
-                .photo
-                    @apply bg-gray-200 flex-shrink-0 bg-cover bg-center bg-no-repeat relative
+                .photo-wrap
+                    @apply w-full mb-auto relative flex justify-center
+                    width: 300px
+                    .photo
+                        @apply bg-gray-200 flex-shrink-0 bg-cover bg-center bg-no-repeat transition-all duration-500
                     .upload
                         @apply bg-black bg-opacity-50 text-white absolute
             .details

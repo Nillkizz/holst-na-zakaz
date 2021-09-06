@@ -8,6 +8,20 @@ export default () => {
         const jsonElement = document.getElementById('calculatorJsonData');
         const jsonData = JSON.parse(jsonElement.innerHTML)
         const data = {
+            init() {
+                window.addEventListener('resize', (() => {
+                    const swiper = this.frames.swiper
+                    swiper.on('destroy', ((e) => {
+                        this.frames.swiper = this.frames.makeSwiper()
+                    }).bind(this));
+                    swiper.destroy()
+                }).bind(this));
+
+                this.$watch('frames_modal_show', e=>{
+                    document.documentElement.classList.toggle('stop-scrolling', e)
+                })
+            },
+
             data: { ...jsonData },
             size: jsonData.steps[0].default,
             processing: jsonData.steps[1].default,
@@ -41,13 +55,28 @@ export default () => {
                 sizes: {
                     maxWidth: 300,
                     maxHeight: 450,
-                    width: 300,
-                    height: 450,
                 },
                 [':style']() {
-                    const height = this.photo.sizes.height;
-                    const width = this.photo.sizes.width;
-                    return `background-image: url(${this.photo.dataURL}); height: ${height}px; width: ${width}px`;
+                    function limitImageSize(sizes) {
+                        const maxWidth = this.photo.sizes.maxWidth;
+                        const maxHeight = this.photo.sizes.maxHeight;
+                        const aspectRatio = sizes.height / sizes.width;
+                        const preHeight = Math.min(sizes.height, maxHeight)
+                        const preWidth = preHeight / aspectRatio;
+                        const height = (preWidth <= maxWidth) ? preHeight : maxWidth * aspectRatio;
+                        const width = preWidth <= maxWidth ? preWidth : maxWidth;
+                        return { width, height };
+                    }
+                    function computeImageSize() {
+                        const maxWidth = this.photo.sizes.maxWidth;
+                        const maxHeight = this.photo.sizes.maxHeight;
+                        const aspectRatio = this.size.width / this.size.height;
+                        const height = aspectRatio >= 1 ? maxWidth : maxHeight / aspectRatio;
+                        const width = aspectRatio < 1 ? maxHeight : maxWidth * aspectRatio;
+                        return limitImageSize.bind(this)({ width, height });
+                    }
+                    const sizes = computeImageSize.bind(this)()
+                    return `background-image: url(${this.photo.dataURL}); height: ${sizes.height}px; width: ${sizes.width}px`;
                 },
                 field: {
                     ['@change'](e) {
@@ -82,6 +111,21 @@ export default () => {
                 }
             },
             frames: {
+                makeSwiper() {
+                    const width = window.innerWidth;
+                    const height = window.innerHeight;
+                    function getConfig() {
+                        return {
+                            slidesPerView: (width > 1280) ? 4 : (width > 1080) ? 3 : (width > 860) ? 2 : 1,
+                            grid: {
+                                rows: (height > 620 && width > 860) ? 2 : 1,
+                            },
+                            spaceBetween: 30,
+                        }
+                    };
+                    const swiper = new Swiper('#sec3-calculator .swiper', getConfig());
+                    return swiper;
+                },
                 swiper: (() => {
                     const width = window.innerWidth;
                     const height = window.innerHeight;
@@ -95,18 +139,23 @@ export default () => {
                         if (height > 620 && width > 860) return 2;
                         return 1;
                     }
-                    return new Swiper('#sec3-calculator .swiper', {
-                        slidesPerView: getSlidesPerView(),
-                        grid: {
-                            rows: getGridRows(),
-                        },
-                        spaceBetween: 30,
+                    function getConfig() {
+                        return {
+                            slidesPerView: getSlidesPerView(),
+                            grid: {
+                                rows: getGridRows(),
+                            },
+                            spaceBetween: 30,
 
-                        navigation: {
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        },
-                    })
+                            navigation: {
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            },
+                        }
+                    };
+                    const swiper = new Swiper('#sec3-calculator .swiper', getConfig());
+                    return swiper;
+
                 })(),
                 data: jsonData.steps[3],
                 frame: jsonData.steps[3].default,

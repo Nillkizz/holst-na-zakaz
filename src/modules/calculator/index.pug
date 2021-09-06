@@ -73,12 +73,13 @@ include ../../parts/mixins.pug
                                             template(x-for="i in frames.getFilteredFrames()")
                                                 .swiper-slide
                                                     img(:src="i.image")
-                                                    .material Материал: #[span(x-text="i.material")]
-                                                    .width() Ширина: #[span(x-text="i.width")] См
-                                                    .color() Цвет: #[span(x-text="i.color.name")]
+                                                    .details
+                                                        .material Материал: #[span(x-text="i.material")]
+                                                        .width() Ширина: #[span(x-text="i.width")] См
+                                                        .color() Цвет: #[span(x-text="i.color.name")]
                                                     +textBtn().static.select(@click="frames.set(i)" :class="{inverted: i.id !== frames.frame.id}" x-text="i.id === frames.frame.id ? 'Выбрано' : 'Выбрать'")
-                                    .swiper-button-prev
-                                    .swiper-button-next
+                                    .swiper-button-prev(@click="frames.swiper.slidePrev()")
+                                    .swiper-button-next(@click="frames.swiper.slideNext()")
                                 template(x-if="!frames.getFilteredFrames().length") 
                                     .frames.not-found
                                         .error-text Ничего не найдено
@@ -92,7 +93,8 @@ include ../../parts/mixins.pug
         .title Описание заказа
         .content
             .select-photo
-                .photo(x-bind="photo")
+                .photo-wrap
+                    .photo(x-bind="photo")
                     input(type="file" x-ref="uploadPhoto" x-bind="photo.field").hidden
                     +textBtn('Выбрать фото')(x-bind="photo.button").static.upload
             .details
