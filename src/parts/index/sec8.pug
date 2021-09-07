@@ -1,9 +1,6 @@
 mixin item(avatar, text, inst)
     .item_wrapper
-        if avatar
-            img.avatar(src=avatar)
-        else 
-            .avatar
+        .avatar(style=`background-image: url('${avatar}')`)
         .content
             .text= text
             .inst= '@' + inst

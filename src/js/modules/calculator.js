@@ -1,27 +1,39 @@
 import Alpine from 'alpinejs';
 import Swiper from 'swiper';
+import ImageCompare from 'image-compare-viewer';
 
 export default () => {
 
     Alpine.data('calculator', () => {
         const jsonElement = document.getElementById('calculatorJsonData');
-        const jsonData = JSON.parse(jsonElement.innerHTML)
+        const jsonData = JSON.parse(jsonElement.innerHTML);
         const data = {
             init() {
                 window.addEventListener('resize', (() => {
-                    const swiper = this.frames.swiper
+                    const swiper = this.frames.swiper;
                     swiper.on('destroy', ((e) => {
-                        this.frames.swiper = this.frames.makeSwiper()
+                        this.frames.swiper = this.frames.makeSwiper();
                     }).bind(this));
-                    swiper.destroy()
+                    swiper.destroy();
                 }).bind(this));
 
-                this.$watch('frames_modal_show', e=>{
-                    document.documentElement.classList.toggle('stop-scrolling', e)
-                })
+                this.$watch('frames_modal_show', e => {
+                    document.documentElement.classList.toggle('stop-scrolling', e);
+                });
+
                 this.$nextTick(() => {
-                    this.$el.querySelector('.processing [data-tsi-accordeon]').accordeon.update()
-                })
+                    this.$el.querySelector('.processing [data-tsi-accordeon]').accordeon.update();
+                    this.$el.querySelector('.cover [data-tsi-accordeon]').accordeon.update();
+                    this.$el.querySelectorAll('#sec3-calculator [image-compare]').forEach(el => {
+                        new ImageCompare(el, {
+                            smoothing: true,
+                            smoothingAmount: 100,
+                            controlShadow: true,
+                            addCircle: true,
+                            addCircleBlur: true
+                        }).mount();
+                    });
+                });
             },
 
             data: { ...jsonData },

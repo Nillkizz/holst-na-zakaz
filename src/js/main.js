@@ -10,7 +10,5 @@ document.addEventListener('DOMContentLoaded', () => {
             index();
             break;
     }
-    window.lazyContent = new LazyLoad({
-        use_native: true // <-- there you go
-    });
+    window.lazyContent = new LazyLoad(document.getElementsByTagName('IMG'));
 })

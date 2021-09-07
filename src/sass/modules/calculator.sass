@@ -12,7 +12,7 @@
     &[x-cloak]
         opacity: 0
     .calculator
-        @apply flex flex-col gap-8 justify-between text-16 lg_text-18 w-full max-w-sm
+        @apply flex flex-col mx-auto md_mx-0 gap-8 justify-between text-16 lg_text-18 w-full max-w-sm
         @media (min-width: 1024px)
             max-width: 340px
             min-width: 290px
@@ -75,11 +75,10 @@
                         .controls
                             @apply flex-row flex-wrap justify-center
                             .cover
-                                +control_element()
-                                @apply px-1
-                                width: 160px
-                                @media (min-width: 1024px)
-                                    width: 240px
+                                @apply w-full
+                                button
+                                    +control_element()
+                                    @apply px-1 py-3 w-full
             .step.frame
                 .step__body
                     .collapse-body

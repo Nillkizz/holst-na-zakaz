@@ -7,9 +7,9 @@ header
                     li
                         a(href=item.link)= item.text
         .contacts
-            +wrapLink(phones.msc, 'tel:')
+            +wrapLink(phones.msc, 'tel:').font-roboto
             .btns
-                a(href=messengers.whatsapp.link title='WhatsApp') 
+                a(href=messengers.whatsapp.link title='WhatsApp')
                     +icon('sprite-whatsapp')
                 a(href=`mailto:${email}` title='Email') 
                     +icon('sprite-mail')

@@ -209,6 +209,7 @@
             @media (max-width:1024px)
                 @apply mx-auto
                 max-width: 500px
+            
             .slider__items
                 .slider__item 
                     @apply flex justify-center p-6 
@@ -244,7 +245,7 @@
         
 #sec8-reviews
     .wrapper
-        @apply px-2 lg_px-32
+        @apply px-2 lg_px-20
         .radial:nth-child(1)
             transform: scale(.5)
             top: -500px
@@ -270,7 +271,7 @@
                     .item_wrapper
                         @apply p-6 flex gap-8 bg-white shadow-1
                         .avatar
-                            @apply h-24 w-24 flex-shrink-0 xl_self-center bg-gray-300 rounded-full
+                            @apply h-24 w-24 flex-shrink-0 xl_self-center bg-gray-300 rounded-full bg-center bg-cover
                         .content 
                             @apply flex flex-col gap-3 text-14
                             .inst 
@@ -293,7 +294,7 @@
     
 #sec9
     .wrapper 
-        @apply flex flex-col gap-8 xl_flex-row-reverse xl_justify-between xl_gap-36
+        @apply flex lg_px-20 flex-col gap-8 xl_flex-row-reverse xl_justify-between xl_gap-36
         .image
             @apply flex-shrink-0 w-max max-w-full relative
             .radial:nth-child(1)

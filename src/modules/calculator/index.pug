@@ -36,16 +36,38 @@ include ../../parts/mixins.pug
                                     )
                                 div(:class="`processing_preview-${i} collapse`")
                                     .collapse-body
-                                        span(x-text="i")
+                                        template(x-if="proc.example")
+                                            .example
+                                                template(x-if="proc.example.static")
+                                                    <img :src="proc.example.before" alt="BEFORE" />
+                                                template(x-if="!proc.example.static")
+                                                    <div image-compare>
+                                                        <img :src="proc.example.before" alt="BEFORE" />
+                                                        <img :src="proc.example.after" alt="AFTER" />
+                                                    </div>
             +step(3, 'cover')
                 +block('body')
-                    .controls
-                        template(x-for="coverOption in data.steps[2].covers")
-                            +textBtn().cover.static(
-                                x-text="coverOption.name"
-                                @click="Object.assign(cover, coverOption)"
-                                :class="{inverted: coverOption.name !== cover.name}"
-                                )
+                    .controls(data-tsi-accordeon)
+                        template(x-for="(coverOption, i) in data.steps[2].covers")
+                            .cover
+                                +textBtn().static(
+                                    x-text="coverOption.name"
+                                    @click="Object.assign(cover, coverOption)"
+                                    :class="{inverted: coverOption.name !== cover.name}"
+                                    data-tsi-toggle='collapse'
+                                    :not-expand="i==0"
+                                    :data-tsi-target="`.cover_preview-${i}`"
+                                    )
+                                div(:class="`cover_preview-${i} collapse`")
+                                    .collapse-body
+                                        template(x-if="coverOption.example")
+                                            .example
+                                                template(x-if="coverOption.example.static")
+                                                    <img :src="coverOption.example.before" alt="BEFORE" />
+                                                template(x-if="!coverOption.example.static")
+                                                    div(image-compare)
+                                                        img(:src="coverOption.example.before" alt="BEFORE")
+                                                        img(:src="coverOption.example.after" alt="AFTER")
             +step(4, 'frame')
                 +block('body')
                     .controls 

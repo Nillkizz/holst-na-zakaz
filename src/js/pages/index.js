@@ -25,7 +25,7 @@ function sec4() {
     let slides = Array.from(slider.querySelectorAll('.slider__item'))
         .filter(function (slide) {
             const is_mobile = Array.from(slide.classList).indexOf('mobile') > -1;
-            if (window.screen.width < 1024) return is_mobile
+            if (window.innerWidth < 1024) return is_mobile
             else return !is_mobile
         });
     Array.from(slider.querySelectorAll('.slider__item')).forEach(function (slide) {
@@ -69,7 +69,7 @@ function sec7() {
 
 
 function sec8() {
-    if (window.screen.width >= 1280) return;
+    if (window.innerWidth >= 1280) return;
     const sliderSelector = '#sec8-reviews .slider'
     const slider = document.querySelector(sliderSelector);
     const slider_indicators = slider.querySelector('.slider__indicators');

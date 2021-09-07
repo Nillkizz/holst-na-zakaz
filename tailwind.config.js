@@ -65,7 +65,7 @@ module.exports = {
         '-135': '-135deg',
       },
       boxShadow: {
-        '1': 'box-shadow: 4px 4px 20px 1px rgba(124, 40, 36, 0.1)',
+        '1': '4px 4px 20px 1px rgba(124, 40, 36, 0.1)',
       },
     },
   },

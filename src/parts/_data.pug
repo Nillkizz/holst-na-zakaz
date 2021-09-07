@@ -82,8 +82,6 @@
     var footerLinks = [
         {text: 'Политика конфиденциальности', link: ''},
         {text: 'Условия публичной оферты', link: ''},
-        {text: 'Узнайте о скидках и акциях', link: ''},
-        {text: 'Для сотрудничества', link: ''}
     ]
 
 - 
@@ -103,7 +101,7 @@
 - 
     var reviews = [
         {
-            avatar: '',
+            avatar: '/assets/img/sec1_2.jpg',
             text: `Все здорово, довольна картиной на 100% и даже больше. Дизайнер Артем помог подобрать фото, посоветовал стилистику исполнения. Заказ выполнили очень быстро, всего за 2 дня. Доставили мне домой. Плюс в том, что оплачивала уже по факту доставки, то есть я ничем не рисковала. Работой ребят очень довольна, все на высшем уровне – и портрет и обслуживание. Огромное вам спасибо за такую красоту!`,
             inst: 'insta_unsta'
         },
@@ -246,31 +244,71 @@
                     },
                     {
                         name: 'Живопись',
-                        price: 1500
+                        price: 1500,
+                        example: { 
+                            static: false,
+                            before: '/assets/img/sec3_2_1_before.jpg',
+                            after: '/assets/img/sec3_2_1_after.jpg'
+                        }
                     },
                     {
                         name: 'Портрет в образе',
-                        price: 1500
+                        price: 1500,
+                        example: { 
+                            static: false,
+                            before: '/assets/img/sec3_2_2_before.jpg',
+                            after: '/assets/img/sec3_2_2_after.jpg'
+                        }
+
                     },
                     {
                         name: 'Фотоколлаж',
-                        price: 1000
+                        price: 1000,
+                        example: { 
+                            static: true,
+                            before: '/assets/img/sec3_2_3_static.jpg',
+                        }
+
                     },
                     {
                         name: 'Love is',
-                        price: 1000
+                        price: 1000,
+                        example: { 
+                            static: false,
+                            before: '/assets/img/sec3_2_4_before.jpg',
+                            after: '/assets/img/sec3_2_4_after.jpg'
+                        }
+
                     },
                     {
                         name: 'Фотомазайка',
-                        price: 1000
+                        price: 1000,
+                        example: { 
+                            static: false,
+                            before: '/assets/img/sec3_2_5_before.jpg',
+                            after: '/assets/img/sec3_2_5_after.jpg'
+                        }
+
                     },
                     {
                         name: 'Дрим арт',
-                        price: 1500
+                        price: 1500,
+                        example: { 
+                            static: false,
+                            before: '/assets/img/sec3_2_6_before.jpg',
+                            after: '/assets/img/sec3_2_6_after.jpg'
+                        }
+
                     },
                     {
                         name: 'Портрет маслом',
-                        price: 2500
+                        price: 2500,
+                        example: { 
+                            static: false,
+                            before: '/assets/img/sec3_2_7_before.jpg',
+                            after: '/assets/img/sec3_2_7_after.jpg'
+                        }
+
                     },
                 ],
                 default: {
@@ -288,11 +326,20 @@
                     },
                     { 
                         name: 'Покрытие лаком',
-                        price: 120
+                        price: 120,
+                        example: { 
+                            static: false,
+                            before: '/assets/img/sec3_3_varnish_before.jpg',
+                            after: '/assets/img/sec3_3_varnish_after.jpg'
+                        }
                     },
                     { 
                         name: 'Покрытие 3D гелем',
-                        price: 500
+                        price: 500,
+                        example: { 
+                            static: true,
+                            before: '/assets/img/sec3_3_3d-gel.jpg',
+                        }
                     },
                 ],
                 default: {
